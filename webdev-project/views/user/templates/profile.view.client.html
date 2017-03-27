@@ -1,0 +1,67 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="col-xs-12">
+            <div class="navbar-text pull-right">
+                <span ng-click="model.updateUser(model.user)"
+                      class="glyphicon glyphicon-ok"></span>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="">
+                    Profile
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <div class="container-fluid">
+
+        <div CLASS="alert alert-danger" ng-show="model.error">
+            {{model.error}}
+        </div>
+
+        <div class="alert alert-success" ng-show="model.message">
+            {{model.message}}
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input ng-model="model.user.firstName" type="text" class="form-control" id="first-name" placeholder="Gary">
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input ng-model="model.user.lastName" type="text" class="form-control" id="last-name" placeholder="wilson">
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input ng-model="model.user.username" type="text" class="form-control" id="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="abc@gmail.com">
+            </div>
+
+        </form>
+
+        <a class="btn btn-primary btn-block"
+           href="#/user/{{model.user._id}}/website">Websites</a>
+
+        <a ng-click="model.unregisterUser(model.user)" class="btn btn-danger btn-block">Delete</a>
+
+        <a class="btn btn-danger  btn-block"
+           href="#login">Logout</a>
+    </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row navbar-text pull-right ">
+            <div class="col-xs-3 pull-right">
+                <a href="#">
+                    <span class="glyphicon glyphicon glyphicon-user" id="span1"></span>
+                </a>
+            </div>
+            </div>
+        </div>
+</nav>

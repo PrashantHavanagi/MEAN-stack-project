@@ -1,0 +1,51 @@
+ <div class="container-fluid">
+
+        <form>
+            <div class="form-group">
+                <label for="firstname" class="">First Name</label>
+                <input ng-model="model.user.firstName" id="firstname" type="text"
+                       class="form-control"
+                       placeholder="name"/>
+
+                <label for="lastname" class="">Last Name</label>
+                <input ng-model="model.user.lastName" id="lastname" type="text"
+                       class="form-control"
+                       placeholder="lastName"/>
+
+                <label for="email">Email</label>
+                <input type="email"
+                           class="form-control"
+                           id="email"
+                           ng-model="model.user.email"
+                           placeholder="Please enter your email address"/>
+
+        <label for="username" class="">Username</label>
+        <input ng-model="model.user.username" id="username" type="text"
+               class="form-control"
+               placeholder="username"/>
+
+
+        <label for="password" class="">Password</label>
+        <input ng-model="model.user.password" id="password" type="password"
+               class="form-control"
+               placeholder="password"/>
+
+        <label for="password1" class="">Re-enter Password</label>
+        <input id="password1" type="password"
+               class="form-control"
+               placeholder="verify password"/>
+
+                <label>Your Interests</label>
+               <br> <input  type="checkbox" name="interest" value="sports"/>Sports<br>
+                 <input type="checkbox" name="interest" value="movies"/>Movies<br>
+                <input type="checkbox" name="interest" value="rest"/>Restuarents
+
+            </div>
+        </form>
+        <a class="btn btn-primary btn-block"
+           ng-click="model.registerUser(model.user)">Register</a>
+
+        <a class="btn btn-danger  btn-block"
+           href="#login">Cancel</a>
+    </div>
+
