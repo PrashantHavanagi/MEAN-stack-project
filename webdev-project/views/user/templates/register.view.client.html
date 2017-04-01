@@ -36,10 +36,15 @@
                placeholder="verify password"/>
 
                 <label>Your Interests</label>
-               <br> <input  type="checkbox" name="interest" value="sports"/>Sports<br>
-                 <input type="checkbox" name="interest" value="movies"/>Movies<br>
-                <input type="checkbox" name="interest" value="rest"/>Restuarents
-
+                <div class="checkbox">
+                <label><input  type="checkbox"  ng-model="model.user.sports" name="interest" />Sports</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox"  ng-model="model.user.movies" name="interest" />Movies</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" ng-model="model.user.rest" name="interest"/>Restuarents</label>
+                </div>
             </div>
         </form>
         <a class="btn btn-primary btn-block"

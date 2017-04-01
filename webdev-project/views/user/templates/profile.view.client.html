@@ -1,19 +1,16 @@
 
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="row container-fluid">
-        <div class="col-xs-12">
-            <div class="navbar-text pull-right">
-                <span ng-click="model.updateUser(model.user)"
-                      class="glyphicon glyphicon-ok"></span>
-            </div>
-            <div class="navbar-header">
-                <a class="navbar-brand" href="">
-                    Profile
-                </a>
-            </div>
-        </div>
-    </div>
-</nav>
+<!--<nav class="navbar navbar-default navbar-fixed-top">-->
+    <!--<div class="row container-fluid">-->
+        <!--<div class="col-xs-12">-->
+            <!--<div class="navbar-text pull-right">-->
+                <!--<span ng-click="model.updateUser(model.user)"-->
+                      <!--class="glyphicon glyphicon-ok"></span>-->
+            <!--</div>-->
+            <!---->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
 
     <div class="container-fluid">
 
@@ -40,8 +37,22 @@
             </div>
             <div class="form-group">
                 <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="abc@gmail.com">
+                <input ng-model="model.user.email" type="email" class="form-control" id="email" placeholder="abc@gmail.com">
             </div>
+            <div class="form-group">
+                <label>Your Interests</label>
+                <div class="checkbox">
+                    <label><input  type="checkbox"  ng-model="model.user.sports" name="interest" />Sports</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox"  ng-model="model.user.movies" name="interest" />Movies</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" ng-model="model.user.rest" name="interest"/>Restuarents</label>
+                </div>
+            </div>
+
+
 
         </form>
 
@@ -52,6 +63,7 @@
 
         <a class="btn btn-danger  btn-block"
            href="#login">Logout</a>
+        <a ng-click="model.updateUser(model.user)"class="btn btn-default  btn-block">Update</a>
     </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

@@ -49,7 +49,7 @@ jQuery(function($) {'use strict',
 		Scroll();
 	});
 
-	$('.navbar-collapse ul li a').click(function() {  
+	$('.navbar-collapse ul li a').click(function() {
 		$('html, body').animate({scrollTop: $(this.hash).offset().top - 79}, 1000);
 		return false;
 	});
@@ -90,7 +90,7 @@ function Scroll() {
 		if ( winTop > contentTop[i] - rangeTop ){
 			$('.navbar-collapse li.scroll')
 			.removeClass('active')
-			.eq(i).addClass('active');			
+			.eq(i).addClass('active');
 		}
 	})
 

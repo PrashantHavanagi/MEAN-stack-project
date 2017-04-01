@@ -19,19 +19,24 @@ module.exports = function (app,userModel) {
 
     function createUser(req, res) {
         var user = req.body;
+
         var newUser = {
             username: user.username,
             password: user.password,
             email: user.email,
             firstName: user.firstName,
-            lastName: user.lastName
+            lastName: user.lastName,
+            sports : user.sports,
+            movies : user.movies,
+            rest : user.rest
         };
-
+        console.log(newUser);
         userModel
             .createUser(newUser)
             .then(function (newUser) {
                 res.json(newUser);
             }, function (err) {
+                console.log("Here");
                 res.sendStatus(404).send(err);
             });
 
