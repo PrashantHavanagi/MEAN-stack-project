@@ -24,7 +24,17 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
+            // .when("/user/:uid", {
+            //     templateUrl: "views/user/templates/profile.view.client.html",
+            //     controller: "ProfileController",
+            //     controllerAs: "model"
+            // })
             .when("/user/:uid", {
+                templateUrl: "views/events/templates/main.view.client.html",
+                controller: "EventsController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/profile", {
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model"

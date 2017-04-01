@@ -8,6 +8,7 @@
         var userId = $routeParams['uid'];
         vm.unregisterUser = unregisterUser;
         vm.updateUser=updateUser;
+        vm.userId = userId;
 
         function init() {
             UserService
