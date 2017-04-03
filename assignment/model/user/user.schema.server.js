@@ -8,6 +8,7 @@ module.exports = function() {
         email: String,
         phone: String,
         address: String,
+        zipcode: String,
         events: [{type:String}],
         sports: Boolean,
         movies: Boolean,

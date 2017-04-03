@@ -28,7 +28,9 @@ module.exports = function (app,userModel) {
             lastName: user.lastName,
             sports : user.sports,
             movies : user.movies,
-            rest : user.rest
+            rest : user.rest,
+            address: user.address,
+            zipcode: user.zipcode
         };
         console.log(newUser);
         userModel
