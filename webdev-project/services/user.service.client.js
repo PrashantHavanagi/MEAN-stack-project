@@ -12,7 +12,6 @@
             "findUserByCredentials": findUserByCredentials,
             "findUserById": findUserById,
             "findUserByUsername": findUserByUsername,
-            "findNearByZipCodes": findNearByZipCodes
         };
         return api;
 
@@ -38,16 +37,6 @@
 
         function findUserById(uid) {
             return $http.get("/api/user/"+uid);
-        }
-        function findNearByZipCodes(zipcode){
-            var key = "js-rqggQX3IUkKVa0ZHDqFQjkn6iUqtNcofCEwtBzcvUWr5XrMARrrbMOh4JIxxVVMx";
-            var format = "json";
-            var units = "mile";
-            var distance = "1";
-            var urlBase = "https://www.zipcodeapi.com/rest/<api_key>/radius.<format>/<zip_code>/<distance>/<units>";
-
-            var url = urlBase.replace("<api_key>", key).replace("<format>", format).replace("<zip_code>", zipcode).replace("<distance>", distance).replace("<units>", units);
-            return $http.get(url);
         }
     }
 })();

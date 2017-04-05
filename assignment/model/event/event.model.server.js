@@ -44,7 +44,7 @@ module.exports = function () {
         return EventModel.findOne({_id:eventId});
     }
     function findEventsByZip(zipcode){
-        return EventModel.find({zipcode:zipcode});
+        return EventModel.find({nearByZipcodes: zipcode});
     }
     function updateEvent(eventId, updatedEvent){
         return EventModel.update({_id:eventId},{$set: updatedEvent});

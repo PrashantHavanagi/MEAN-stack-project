@@ -3,6 +3,7 @@ module.exports = function (app,eventModel) {
     // app.get("/api/website/:websiteId/page", findAllPagesForWebsite);
     // app.put("/api/page/:pageId", updatePage);
     // app.delete("/api/page/:pageId", deletePage);
+    app.get("/api/event", findEventsByZip);
     app.post("/api/user/:userId/event", createEvent);
 
     // function deletePage(req, res) {
@@ -72,6 +73,23 @@ module.exports = function (app,eventModel) {
             .findEventById(eventId)
             .then(function (event) {
                 res.json(event);
+            }, function (err) {
+                res.sendStatus(404);
+            });
+    }
+    function findEventsByZip(req, res) {
+        var zipcode = req.query['zipcode'];
+        console.log(zipcode);
+        eventModel
+            .findEventsByZip(zipcode)
+            .then(function (events) {
+                if(events[0]){
+                    // res.json(events);
+                    res.send(events);
+                }
+                else{
+                    res.sendStatus(404);
+                }
             }, function (err) {
                 res.sendStatus(404);
             });
