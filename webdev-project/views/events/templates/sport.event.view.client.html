@@ -41,21 +41,21 @@
                        placeholder="Movie Name"/>
 
                 <label for="image-url">Image URL</label>
-                <input  ng-model="model.sport.url"
+                <input  ng-model="model.event.url"
                         id="image-url"
                         class="form-control"
                         type="text"
                         placeholder="Image URL"/>
 
                 <label for="sport-review">Description</label>
-                <textarea ng-model="model.sport.desc"
+                <textarea ng-model="model.event.desc"
                           class="form-control"
                           id="sport-review"
                           rows="3"></textarea>
 
                 <label for="datetimepicker">Date and time</label>
                 <div id="datetimepicker" class="input-append date">
-                    <input type="text" ng-model="model.sport.dnt"></input>
+                    <input type="text" ng-model="model.event.eventDate"/>
                     <span class="add-on">
                 <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
               </span>
@@ -74,7 +74,7 @@
         </form>
     </div>
 <a class="btn btn-primary btn-block"
-   ng-click="model.registerUser(model.user)">Create</a>
+   ng-click="model.registerEvent(model.event, 'SPORT')">Create</a>
 
 <a class="btn btn-danger  btn-block"
    href="#user/{{model.userId}}">Cancel</a>

@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("EventsController", eventController);
 
-    function eventController($routeParams, EventService, $location) {
+    function eventController($routeParams, EventService, $location, UserService) {
         var vm = this;
         //vm.login = login;
         vm.registerEvent = registerEvent;
@@ -35,7 +35,8 @@
                 });
         }
 
-        function registerEvent(event) {
+        function registerEvent(event, type) {
+            event.type = type;
             EventService
                 // .findUserByUsername(user.username)
                 // .success(function (user) {
@@ -43,9 +44,9 @@
                 // })
                 // .error(function(){
                 //     UserService
-                        .createEvent(event)
+                        .createEvent(vm.userId, event)
                         .success(function(event){
-                            $location.url("/user/"+user._id); //from here @@
+                            $location.url("/user/"+vm.userId); //from here @@
                         })
                         .error(function () {
                             vm.error = 'sorry could not create event';

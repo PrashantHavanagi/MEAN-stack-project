@@ -3,7 +3,7 @@ module.exports = function (app,eventModel) {
     // app.get("/api/website/:websiteId/page", findAllPagesForWebsite);
     // app.put("/api/page/:pageId", updatePage);
     // app.delete("/api/page/:pageId", deletePage);
-    app.post("/api/user", createEvent);
+    app.post("/api/user/:userId/event", createEvent);
 
     // function deletePage(req, res) {
     //     var pageId = req.params.pageId;
