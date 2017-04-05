@@ -21,7 +21,7 @@
             console.log(user);
             EventService.findEventsByZip(user.zipcode)
                 .success(function(events){
-                    console.log(events);
+                    vm.events = events;
                 })
                 .error(function (err) {
                     vm.error = 'sorry could not create event';
@@ -40,9 +40,9 @@
                     event.nearByZipcodes = zipcodes;
                     EventService
                         .createEvent(vm.userId, event)
-                        .success(function(event){
-                            console.log(event);
-                            $location.url("/user/"+vm.userId); //from here @@
+                        .success(function(events){
+                            console.log(events);
+                            $location.url("/user/"+vm.userId);
                         })
                         .error(function (err) {
                             vm.error = 'sorry could not create event';

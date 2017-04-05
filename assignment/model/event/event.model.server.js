@@ -27,6 +27,7 @@ module.exports = function () {
                     .then(function (user) {
                         user.events.push(event);
                         event._user = user._id;
+                        event.eventCreator = user.username;
                         user.save();
                         event.save();
                         return event;

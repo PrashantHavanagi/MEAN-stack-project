@@ -36,7 +36,7 @@
         <form>
             <div class="form-group">
                 <label for="sport-name" class="">Sport</label>
-                <input ng-model="model.event.sportName" id="sport-name" type="text"
+                <input ng-model="model.event.eventName" id="sport-name" type="text"
                        class="form-control"
                        placeholder="Movie Name"/>
 
@@ -48,18 +48,10 @@
                         placeholder="Image URL"/>
 
                 <label for="sport-review">Description</label>
-                <textarea ng-model="model.event.desc"
+                <textarea ng-model="model.event.description"
                           class="form-control"
                           id="sport-review"
                           rows="3"></textarea>
-
-                <label for="datetimepicker">Date and time</label>
-                <div id="datetimepicker" class="input-append date">
-                    <input type="text" ng-model="model.event.eventDate"/>
-                    <span class="add-on">
-                <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-              </span>
-                </div>
 
                 <label for="image-url">Address</label>
                 <input  ng-model="model.event.address"
@@ -75,12 +67,15 @@
                         type="text"
                         placeholder="Zip Code"/>
 
-                <script type="text/javascript">
-                    $('#datetimepicker').datetimepicker({
-                        format: 'dd/MM/yyyy hh:mm:ss',
-                        language: 'pt-BR'
-                    });
-                </script>
+                <label for="da">Date</label>
+                <input type="date" ng-model="model.event.eventDate"
+                       class="form-control"
+                       id="da"/>
+
+                <label for="ti">Time</label>
+                <input type="time" ng-model="model.event.eventDate"
+                       class="form-control"
+                       id="ti"/>
 
                 <label for="rating-system" class="control-label">Rate This</label>
                 <input id="rating-system" type="number" class="rating" min="1" max="5" step="1">

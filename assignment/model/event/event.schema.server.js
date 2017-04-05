@@ -3,13 +3,13 @@ module.exports = function() {
     var EventSchema = mongoose.Schema({
         _user: {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
         type: {type:String, enum:['SPORT','MOVIE','REST']},
+        eventCreator: String,
         description: String,
-        eventname: String,
+        eventName: String,
         address: String,
         zipcode: String,
-        // events: [{type:String}],
         comments: [{type: String}],
-        eventDate: String,
+        eventDate: Date,
         url: String,
         nearByZipcodes: [{type: String}],
         dateCreated: {type:Date, default: Date.now()}
