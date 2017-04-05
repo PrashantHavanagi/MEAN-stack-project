@@ -9,6 +9,7 @@ module.exports = function() {
         address: String,
         zipcode: String,
         comments: [{type: String}],
+        participants :[{type: String}],
         eventDate: Date,
         url: String,
         nearByZipcodes: [{type: String}],

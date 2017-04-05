@@ -5,7 +5,7 @@ module.exports = function (app,eventModel) {
     // app.delete("/api/page/:pageId", deletePage);
     app.get("/api/event", findEventsByZip);
     app.post("/api/user/:userId/event", createEvent);
-
+    app.put("/api/event/:eventId", addParticipant);
     // function deletePage(req, res) {
     //     var pageId = req.params.pageId;
     //     pageModel
@@ -23,6 +23,18 @@ module.exports = function (app,eventModel) {
     //         });
     //
     // }
+
+    function addParticipant(req, res){
+        var eventId = req.params.eventId;
+        var user = req.body;
+        eventModel
+            .addParticipant(eventId, user)
+            .then(function (response) {
+                res.json(event);
+            },function (err) {
+                res.sendStatus(404);
+            });
+    }
 
     function createEvent(req, res) {
         var event = req.body;

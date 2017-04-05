@@ -6,6 +6,7 @@
     function eventController($routeParams, EventService, $location, UserService) {
         var vm = this;
         vm.registerEvent = registerEvent;
+        vm.participateUser = participateUser;
 
         function init() {
             var userId = $routeParams['uid'];
@@ -50,6 +51,16 @@
                 })
                 .error(function (err) {
                     vm.error = 'something went wrong';
+                });
+        }
+        
+        function participateUser(user, eventId) {
+            EventService.addParticipant(user, eventId)
+                .success(function(event){
+                    console.log(event);
+                })
+                .error(function (err) {
+                    vm.error = 'sorry could not create event';
                 });
         }
     }

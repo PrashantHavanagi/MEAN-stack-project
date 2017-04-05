@@ -8,6 +8,7 @@ module.exports = function () {
         deleteEvent: deleteEvent,
         //deletePageAndChildren: deletePageAndChildren,
         setModel: setModel,
+        addParticipant: addParticipant
     };
 
     var mongoose = require('mongoose');
@@ -16,6 +17,27 @@ module.exports = function () {
     var EventModel = mongoose.model('EventModel', EventSchema);
 
     return api;
+
+    function addParticipant(eventId, user){
+        return EventModel
+            .findEventById(eventId)
+            .then(function (event) {
+                return model
+                    .userModel
+                    .findUserById(user._id)
+                    .then(function (user) {
+                        user.events.push(event);
+                        event.participants.push(user._id);
+                        user.save();
+                        event.save();
+                        return event;
+                    }, function (err) {
+                        return err;
+                    });
+            }, function (err) {
+                return err;
+            });
+    }
 
     function createEvent(userId, newEvent){
         return EventModel

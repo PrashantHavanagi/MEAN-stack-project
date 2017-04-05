@@ -14,7 +14,8 @@
             // "findEventByUsername": findEventByUsername,
             "findNearByZipCodes": findNearByZipCodes,
             "findEventsByZip":findEventsByZip,
-            "findNearByZipCodes": findNearByZipCodes
+            "findNearByZipCodes": findNearByZipCodes,
+            addParticipant: addParticipant
         };
         return api;
 
@@ -54,6 +55,10 @@
 
         function findEventsByZip(zipcode){
             return $http.get("/api/event?zipcode="+zipcode);
+        }
+
+        function addParticipant(user, eventId) {
+            return $http.put("/api/event/"+eventId, user);
         }
 
         function findNearByZipCodes(zipcode){
