@@ -61,6 +61,20 @@
               </span>
                 </div>
 
+                <label for="image-url">Address</label>
+                <input  ng-model="model.event.address"
+                        id="address"
+                        class="form-control"
+                        type="text"
+                        placeholder="Address"/>
+
+                <label for="zipcode">Zip Code</label>
+                <input  ng-model="model.event.zipcode"
+                        id="zipcode"
+                        class="form-control"
+                        type="text"
+                        placeholder="Zip Code"/>
+
                 <script type="text/javascript">
                     $('#datetimepicker').datetimepicker({
                         format: 'dd/MM/yyyy hh:mm:ss',
