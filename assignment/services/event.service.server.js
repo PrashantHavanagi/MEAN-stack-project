@@ -30,7 +30,7 @@ module.exports = function (app,eventModel) {
         eventModel
             .addParticipant(eventId, user)
             .then(function (response) {
-                res.json(event);
+                res.json(response);
             },function (err) {
                 res.sendStatus(404);
             });
@@ -91,9 +91,9 @@ module.exports = function (app,eventModel) {
     }
     function findEventsByZip(req, res) {
         var zipcode = req.query['zipcode'];
-        console.log(zipcode);
+        var userId = req.query['userId'];
         eventModel
-            .findEventsByZip(zipcode)
+            .findEventsByZip(zipcode, userId)
             .then(function (events) {
                 if(events[0]){
                     // res.json(events);

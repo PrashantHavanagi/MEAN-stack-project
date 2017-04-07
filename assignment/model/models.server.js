@@ -13,13 +13,14 @@ module.exports = function () {
     //
     var userModel       = require("./user/user.model.server")();
     var eventModel       = require("./event/event.model.server")();
-    // var websiteModel    = require("./website/website.model.server")();
+    var commentModel    = require("./comments/commentBox.model.server")();
     // var pageModel       = require("./page/page.model.server")();
     // var widgetModel     = require("./widget/widget.model.server")();
 
     var model = {
         userModel: userModel,
-        eventModel: eventModel
+        eventModel: eventModel,
+        commentModel: commentModel
         // websiteModel: websiteModel,
         // pageModel:pageModel,
         // widgetModel:widgetModel
@@ -27,6 +28,7 @@ module.exports = function () {
 
     userModel.setModel(model);
     eventModel.setModel(model);
+    commentModel.setModel(model);
     // websiteModel.setModel(model);
     // pageModel.setModel(model);
     // widgetModel.setModel(model);

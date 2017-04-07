@@ -1,41 +1,41 @@
 module.exports = function () {
     var api = {
-        createEvent: createEvent,
-        findEventById: findEventById,
-        findAllEventsForUser: findAllEventsForUser,
-        findEventsByZip: findEventsByZip,
-        updateEvent: updateEvent,
-        deleteEvent: deleteEvent,
-        //deletePageAndChildren: deletePageAndChildren,
+        createComment: createComment,
+        // findEventById: findEventById,
+        findComments: findComments,
+        // findEventsByZip: findEventsByZip,
+        // updateEvent: updateEvent,
+        // deleteEvent: deleteEvent,
+        // //deletePageAndChildren: deletePageAndChildren,
         setModel: setModel,
-        addParticipant: addParticipant
+        // addParticipant: addParticipant
     };
 
     var mongoose = require('mongoose');
 
-    var EventSchema = require('./event.schema.server')();
-    var EventModel = mongoose.model('EventModel', EventSchema);
+    var CommentSchema = require('./commentBox.schema.server')();
+    var CommentModel = mongoose.model('CommentModel', CommentSchema);
 
     return api;
 
-    function addParticipant(eventId, user){
-     return model.userModel
-            .findUserById(user._id)
-            .then(function (user) {
-                return EventModel.update(
-                    { _id: eventId },
-                    { $addToSet: {participants: user._id } })
-                    .then(function (event) {
-                    user.events.push(eventId);
-                    user.save();
-                    return event;
-                    }, function (err) {
-                        return err;
-                    });
-            }, function (err) {
-                return err;
-            });
-    }
+    // function addParticipant(eventId, user){
+    //  return model.userModel
+    //         .findUserById(user._id)
+    //         .then(function (user) {
+    //             return EventModel.update(
+    //                 { _id: eventId },
+    //                 { $addToSet: {participants: user._id } })
+    //                 .then(function (event) {
+    //                 user.events.push(eventId);
+    //                 user.save();
+    //                 return event;
+    //                 }, function (err) {
+    //                     return err;
+    //                 });
+    //         }, function (err) {
+    //             return err;
+    //         });
+    // }
 
     function createEvent(userId, newEvent){
         return EventModel

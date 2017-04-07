@@ -41,7 +41,7 @@
                     <h2>{{event.eventName}}</h2>
                     <ul class="post-meta">
                         <li><i class="fa fa-pencil-square-o"></i><strong> Posted By:</strong> {{event.eventCreator}}</li>
-                        <li><i class="fa fa-clock-o"></i><strong> Posted On:</strong> {{event.eventDate}}</li>
+                        <li><i class="fa fa-clock-o"></i><strong> Posted On:</strong> {{event.eventDate | date:"MM/dd/yyyy"}}</li>
                     </ul>
                     <div class="blog-content">
                         <p>{{event.description}}</p>
@@ -56,10 +56,13 @@
                         <div class="modal-content">
                             <div class="modal-body">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <img src={{event.url}} alt="" />
+                                <div class="alert alert-success" ng-show="model.message">
+                                    {{model.message}}
+                                </div>
+                                <img ng-src={{event.url}} class="img-responsive" />
                                 <h2>{{event.eventName}}</h2>
                                 <p>{{event.description}}</p>
-                                <p>The event will be held on : {{event.eventDate.trim()}} and will be played at : {{event.address}}</p>
+                                <p>The event will be held on : {{event.eventDate | date:"MM/dd/yyyy 'at' h:mma"}} and will be played at : {{event.address}}</p>
 
                                 <a class="btn btn-primary btn-block"
                                    ng-click="model.participateUser(model.user, event._id)">Participate</a>

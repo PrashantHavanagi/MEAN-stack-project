@@ -20,7 +20,7 @@
         function renderUser(user) {
             vm.user = user;
             console.log(user);
-            EventService.findEventsByZip(user.zipcode)
+            EventService.findEventsByZip(user)
                 .success(function(events){
                     vm.events = events;
                 })
@@ -57,6 +57,7 @@
         function participateUser(user, eventId) {
             EventService.addParticipant(user, eventId)
                 .success(function(event){
+                    vm.message = "You have successfully registered for this event";
                     console.log(event);
                 })
                 .error(function (err) {

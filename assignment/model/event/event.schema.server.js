@@ -8,12 +8,11 @@ module.exports = function() {
         eventName: String,
         address: String,
         zipcode: String,
-        comments: [{type: String}],
         participants :[{type: String}],
         eventDate: Date,
         url: String,
         nearByZipcodes: [{type: String}],
         dateCreated: {type:Date, default: Date.now()}
-    }, {collection: "gms.event"});
+    }, {collection: "gms.events"});
     return EventSchema;
 };

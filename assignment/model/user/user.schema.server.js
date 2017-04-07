@@ -6,14 +6,14 @@ module.exports = function() {
         firstName: String,
         lastName: String,
         email: String,
+        imageUrl: String,
         phone: String,
         address: String,
         zipcode: String,
-        events: [{type:String}],
+        events: [{type: mongoose.Schema.Types.ObjectId, ref: 'EventModel'}],
         sports: Boolean,
         movies: Boolean,
         rest: Boolean,
-        comments: [{type: String}],
         dateCreated: {type:Date, default: Date.now()}
     }, {collection: "gms.users"});
     return UserSchema;
