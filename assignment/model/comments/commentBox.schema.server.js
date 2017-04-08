@@ -1,6 +1,6 @@
 module.exports = function() {
     var mongoose = require("mongoose");
-    var EventSchema = mongoose.Schema({
+    var CommentSchema = mongoose.Schema({
         eventId: {type: mongoose.Schema.Types.ObjectId, ref: 'EventModel'},
         description: String,
         imageUrl: String,

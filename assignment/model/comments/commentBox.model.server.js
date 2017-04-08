@@ -37,7 +37,7 @@ module.exports = function () {
     //         });
     // }
 
-    function createEvent(userId, newEvent){
+    function createComment(userId, newEvent){
         return EventModel
             .create(newEvent)
             .then(function (event) {
@@ -58,7 +58,7 @@ module.exports = function () {
                 return err;
             });
     }
-    function findAllEventsForUser(userId){
+    function findComments(userId){
         return EventModel.find({_event:userId});
     }
     function findEventById(eventId){

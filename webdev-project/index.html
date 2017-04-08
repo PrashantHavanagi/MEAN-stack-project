@@ -22,12 +22,7 @@
     <script type="text/javascript"
             src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
     </script>
-    <!--<script type="text/javascript">-->
-        <!--$('#datetimepicker').datetimepicker({-->
-            <!--format: 'dd/MM/yyyy hh:mm:ss',-->
-            <!--language: 'pt-BR'-->
-        <!--});-->
-    <!--</script>-->
+
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/smoothscroll.js"></script>
@@ -47,9 +42,6 @@
     <!--<link href="css/animate.css" rel="stylesheet">-->
     <link href="css/main.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
-
-    <!--<link rel="stylesheet" type="text/css" media="screen"-->
-          <!--href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">-->
 
 
     <script src="js/angular.js"></script>
@@ -75,23 +67,12 @@
     <script src="views/user/controllers/register.controller.client.js"></script>
     <script src="views/user/controllers/home.controller.client.js"></script>
     <script src="views/events/controllers/event.controller.client.js"></script>
-    <!--<script src="views/website/controllers/website-list.controller.client.js"></script>-->
-    <!--<script src="views/website/controllers/website-edit.controller.client.js"></script>-->
-    <!--<script src="views/website/controllers/website-new.controller.client.js"></script>-->
-    <!--<script src="views/pages/controllers/page-edit.controller.client.js"></script>-->
-    <!--<script src="views/pages/controllers/page-list.controller.client.js"></script>-->
-    <!--<script src="views/pages/controllers/page-new.controller.client.js"></script>-->
-    <!--<script src="views/widgets/controllers/widget-list.controller.client.js"></script>-->
-    <!--<script src="views/widgets/controllers/widget-edit.controller.client.js"></script>-->
-    <!--<script src="views/widgets/controllers/widget-chooser.controller.client.js"></script>-->
-    <!--<script src="views/widgets/controllers/widget-flickr-search.controller.client.js"></script>-->
-    <!---->
 
     <!-- services -->
 
     <script src="services/user.service.client.js"></script>
     <script src="services/event.service.client.js"></script>
-
+    <script src="services/comment.service.client.js"></script>
 
 </head><!--/head-->
 <!--<body>-->
@@ -117,6 +98,5 @@
 <div ng-view></div>
 </section>
 
-<input id="rating-system" type="number" class="rating" min="1" max="5" step="1">
 </body>
 </html>

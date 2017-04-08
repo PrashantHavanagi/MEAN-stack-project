@@ -1,9 +1,9 @@
 module.exports = function (app,commentModel) {
-    app.get("/api/user", findUser);
-    app.get("/api/user/:userId", findUserByUserId);
-    app.put("/api/user/:userId", updateUser);
-    app.delete("/api/user/:userId", deleteUser);
-    app.post("/api/user", createUser);
+    app.get("/api/comment", findComments);
+    // app.get("/api/user/:userId", findUserByUserId);
+    // app.put("/api/user/:userId", updateUser);
+    // app.delete("/api/user/:userId", deleteUser);
+    app.post("/api/comment", createComment);
 
     // function deleteUser(req, res) {
     //     var userId = req.params.userId;
@@ -17,7 +17,7 @@ module.exports = function (app,commentModel) {
     // }
 
 
-    function createUser(req, res) {
+    function createComment(req, res) {
         var user = req.body;
 
         var newUser = {
@@ -106,7 +106,7 @@ module.exports = function (app,commentModel) {
     //         });
     // }
 
-    function findUserByCredentials(req, res) {
+    function findComments(req, res) {
         var username = req.query['username'];
         var password = req.query['password'];
         userModel
