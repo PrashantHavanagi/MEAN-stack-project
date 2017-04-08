@@ -35,58 +35,62 @@
     </div>
     <div class="row">
 
-        <div ng-repeat="event in model.events" class="col-sm-4">
-            <div class="single-blog">
-                <img ng-src="{{event.url}}" class="img-responsive"/>
-                <h2>{{event.eventName}}</h2>
-                <ul class="post-meta">
-                    <li><i class="fa fa-pencil-square-o"></i><strong> Posted By:</strong> {{event.eventCreator}}</li>
-                    <li><i class="fa fa-clock-o"></i><strong> Posted On:</strong> {{event.eventDate | date:"MM/dd/yyyy"}}</li>
-                </ul>
-                <div class="blog-content">
-                    <p>{{event.description}}</p>
+        <input ng-model="searchText" id="r" type="text" name="search" placeholder="Search.."/><br>
+        <!--<p align="right"> <label>Search: <input ng-model="searchText"></label>-->
+        <div id="searchTextResults">
+            <br>
+            <div ng-repeat="event in model.events | filter:searchText" class="col-sm-4">
+                <div class="single-blog">
+                    <img ng-src="{{event.url}}" class="img-responsive"/>
+                    <h2>{{event.eventName}}</h2>
+                    <ul class="post-meta">
+                        <li><i class="fa fa-pencil-square-o"></i><strong> Posted By:</strong> {{event.eventCreator}}</li>
+                        <li><i class="fa fa-clock-o"></i><strong> Posted On:</strong> {{event.eventDate | date:"MM/dd/yyyy"}}</li>
+                    </ul>
+                    <div class="blog-content">
+                        <p>{{event.description}}</p>
+                    </div>
+                    <!--<a href="" class="btn btn-primary" data-toggle="modal" data-target="#{{event.eventName}}">Read More</a>-->
+                    <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#{{event.eventName}}">Open Modal</button>-->
+                    <a href="" class="btn btn-primary" ng-click="model.populateComments(event._id)" data-toggle="modal" data-target="#{{event.eventName}}">Read More</a>
+                    <!-- Modal -->
                 </div>
-                <!--<a href="" class="btn btn-primary" data-toggle="modal" data-target="#{{event.eventName}}">Read More</a>-->
-                <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#{{event.eventName}}">Open Modal</button>-->
-                <a href="" class="btn btn-primary" ng-click="model.populateComments(event._id)" data-toggle="modal" data-target="#{{event.eventName}}">Read More</a>
-                <!-- Modal -->
-            </div>
-            <div class="modal fade" id="{{event.eventName}}" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <div class="alert alert-success" ng-show="model.message">
-                                {{model.message}}
-                            </div>
-                            <img ng-src={{event.url}} class="img-responsive" />
-                            <h2>{{event.eventName}}</h2>
-                            <p>{{event.description}}</p>
-                            <p>The event will be held on : {{event.eventDate | date:"MM/dd/yyyy 'at' h:mma"}} and will be played at : {{event.address}}</p>
-                            <p ng-show="event.participants.length">
-                                <strong>Participants:</strong>
+                <div class="modal fade" id="{{event.eventName}}" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <div class="alert alert-success" ng-show="model.message">
+                                    {{model.message}}
+                                </div>
+                                <img ng-src={{event.url}} class="img-responsive" />
+                                <h2>{{event.eventName}}</h2>
+                                <p>{{event.description}}</p>
+                                <p>The event will be held on : {{event.eventDate | date:"MM/dd/yyyy 'at' h:mma"}} and will be played at : {{event.address}}</p>
+                                <p ng-show="event.participants.length">
+                                    <strong>Participants:</strong>
                                 <div ng-repeat="participant in event.participants">
                                     <ul class="list-group">
                                         <li class="list-group-item">{{participant}}</li>
                                     </ul>
                                 </div>
-                            </p>
-                            <div ng-if="!model.user.username === event.eventCreator">
-                                <a class="btn btn-success btn-block" ng-click="model.participateUser(model.user, event._id)">Participate</a>
-                            </div>
-                            <div ng-if="model.user.username === event.eventCreator">
-                                <button id="edit" class="btn btn-success btn-block" data-dismiss="modal" ng-click="model.editEvent(event._id)">Edit</button>
-                                <button class="btn btn-danger btn-block" data-dismiss="modal" ng-click="model.deleteEvent(event._id)">Delete</button>
-                            </div>
+                                </p>
+                                <div ng-if="!model.user.username === event.eventCreator">
+                                    <a class="btn btn-success btn-block" ng-click="model.participateUser(model.user, event._id)">Participate</a>
+                                </div>
+                                <div ng-if="model.user.username === event.eventCreator">
+                                    <button id="edit" class="btn btn-success btn-block" data-dismiss="modal" ng-click="model.editEvent(event._id)">Edit</button>
+                                    <button class="btn btn-danger btn-block" data-dismiss="modal" ng-click="model.deleteEvent(event._id)">Delete</button>
+                                </div>
 
-                            <label for="comment" class="">Comments</label>
-                            <textarea ng-model="model.user.comment"
-                                      id="comment"
-                                      class="form-control"
-                                      placeholder="Add a comment"/>
+                                <label for="comment" class="">Comments</label>
+                                <textarea ng-model="model.user.comment"
+                                          id="comment"
+                                          class="form-control"
+                                          placeholder="Add a comment"/>
 
-                            <a ng-click="model.addComment(model.user, event._id)" class="btn btn-primary btn-block">Comments</a>
-                            <div ng-repeat="comment in model.comments">
+                                <a ng-click="model.addComment(model.user, event._id)" class="btn btn-primary btn-block">Comments</a>
+                                <div ng-repeat="comment in model.comments">
 
                                         <span>
                                             <i class="fa fa-clock-o">&nbsp;</i>{{comment.dateCreated | date:"h:mma"}}&nbsp;|
@@ -96,6 +100,7 @@
 
                                 </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -114,13 +119,13 @@
     </footer>
 </nav><!--/#footer-->
 <script type="text/javascript">
-//    alert("Hi");
-//    $('#edit').click(function(e) {
-//        alert("Hi");
-//        e.preventDefault();
-//// Coding
-//         $('#test').modal('hide');
-//        return false;
-//    });
-$("#edit").trigger("click");
+    //    alert("Hi");
+    //    $('#edit').click(function(e) {
+    //        alert("Hi");
+    //        e.preventDefault();
+    //// Coding
+    //         $('#test').modal('hide');
+    //        return false;
+    //    });
+    $("#edit").trigger("click");
 </script>
