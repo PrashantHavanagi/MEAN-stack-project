@@ -24,7 +24,7 @@ module.exports = function () {
             .then(function (user) {
                 return EventModel.update(
                     { _id: eventId },
-                    { $addToSet: {participants: user._id } })
+                    { $addToSet: {participants: user.username } })
                     .then(function (event) {
                     user.events.push(eventId);
                     user.save();

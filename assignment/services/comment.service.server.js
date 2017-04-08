@@ -21,7 +21,8 @@ module.exports = function (app,commentModel) {
             eventId: eventId,
             description: user.comment,
             imageUrl: user.imageUrl,
-            userName: user.username
+            userName: user.username,
+            dateCreated: Date.now()
         };
         console.log(newComment);
         commentModel

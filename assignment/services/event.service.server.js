@@ -38,6 +38,7 @@ module.exports = function (app,eventModel) {
 
     function createEvent(req, res) {
         var event = req.body;
+        event.dateCreated = Date.now();
         var userId = req.params['userId'];
         eventModel
             .createEvent(userId,event)

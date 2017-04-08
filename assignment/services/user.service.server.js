@@ -30,7 +30,8 @@ module.exports = function (app,userModel) {
             movies : user.movies,
             rest : user.rest,
             address: user.address,
-            zipcode: user.zipcode
+            zipcode: user.zipcode,
+            dateCreated: Date.now()
         };
         console.log(newUser);
         userModel
