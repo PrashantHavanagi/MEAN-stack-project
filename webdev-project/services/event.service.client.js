@@ -7,10 +7,10 @@
 
         var api = {
             "createEvent": createEvent,
-           // "deleteUser": deleteUser,
+            "deleteEvent": deleteEvent,
             //"updateUser": updateUser,
             // "findEventByCredentials": findEventByCredentials,
-            // "findEventById": findEventById,
+            "findEventById": findEventById,
             // "findEventByUsername": findEventByUsername,
             "findNearByZipCodes": findNearByZipCodes,
             "findEventsByZip":findEventsByZip,
@@ -19,9 +19,9 @@
         };
         return api;
 
-        // function deleteUser(userId) {
-        //     return $http.delete('/api/user/'+userId);
-        // }
+        function deleteEvent(eventId) {
+            return $http.delete('/api/event/'+eventId);
+        }
 
         function createEvent(userId, event) {
             return $http.post("/api/user/"+userId+"/event", event);
@@ -39,9 +39,9 @@
         // //     return $http.put("/api/user/"+userId, newUser);
         // // }
         //
-        // function findEventById(uid) {
-        //     return $http.get("/api/user/"+uid);
-        // }
+        function findEventById(eid) {
+            return $http.get("/api/event/"+eid);
+        }
         // function findNearByZipCodes(zipcode){
         //     var key = "js-rqggQX3IUkKVa0ZHDqFQjkn6iUqtNcofCEwtBzcvUWr5XrMARrrbMOh4JIxxVVMx";
         //     var format = "json";

@@ -96,14 +96,38 @@ module.exports = function () {
         return EventModel.update({_id:eventId},{$set: updatedEvent});
     }
     function deleteEvent(eventId) {
-
-        return EventModel.findEventById(eventId).populate('_user').then(function (page) {
-            page._website.pages.splice(page._website.pages.indexOf(pageId),1);
-            page._website.save();
-            return deleteChildren(pageId);
+        return EventModel.findById(eventId).populate('_user').then(function (event) {
+            event._user.events.splice(event._user.events.indexOf(eventId),1);
+            event._user.save();
+            var participants = event.participants;
+            return deleteParticipantsAndComment(participants, eventId);
         }, function (err) {
             return err;
         });
+    }
+
+    function deleteParticipantsAndComment(participants, eventId) {
+        if(participants.length == 0){
+            return model.commentModel.deleteComment(eventId)
+                .then(function (response) {
+                    return EventModel.remove({_id:eventId})
+                        .then(function (response) {
+                            return response;
+                        },
+                        function (err) {
+                            return err;
+                        })
+                }, function (err) {
+                    return err;
+                });
+        }
+        model.userModel.findUserbyUsername(participants.shift())
+            .then(function (user) {
+                user.events.splice(user.events.indexOf(eventId), 1);
+                return deleteParticipantsAndComment(participants,eventId)
+            }, function (err) {
+                return err;
+            });
     }
 
     function deleteAll(widgetsOfPage, pageId) {

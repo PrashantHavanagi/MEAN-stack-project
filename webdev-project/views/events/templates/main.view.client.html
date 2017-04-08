@@ -26,7 +26,7 @@
     </div><!--/navbar-->
 </header> <!--/#navigation-->
 
-<div class="container">
+<div class="container-fluid">
     <div class="row text-center clearfix">
         <div class="col-sm-8 col-sm-offset-2">
             <h2 class="title-one">Events</h2>
@@ -63,28 +63,38 @@
                             <h2>{{event.eventName}}</h2>
                             <p>{{event.description}}</p>
                             <p>The event will be held on : {{event.eventDate | date:"MM/dd/yyyy 'at' h:mma"}} and will be played at : {{event.address}}</p>
-
-                            <a class="btn btn-primary btn-block"
-                               ng-click="model.participateUser(model.user, event._id)">Participate</a>
-
-                            <div class="container-fluid">
-                                <label for="comment" class="">Comments</label>
-                                <textarea ng-model="model.user.comment"
-                                          id="comment"
-                                          class="form-control"
-                                          placeholder="comments"/>
-
-                                <a ng-click="model.addComment(model.user, event._id)" class="btn btn-primary btn-block">Comment</a>
-                                <div ng-repeat="comment in model.comments">
+                            <p ng-show="event.participants.length">
+                                <strong>Participants:</strong>
+                                <div ng-repeat="participant in event.participants">
                                     <ul class="list-group">
-                                            <span><i class="fa fa-pencil-square-o"><strong>Posted By:</strong></i>{{comment.userName}} |
-                                                <i class="fa fa-clock-o"><strong>Posted at: </strong></i>{{comment.dateCreated | date: "h:mma"}}</>
-
-                                        <li class="list-group-item">{{comment.description}}</li>
+                                        <li class="list-group-item">{{participant}}</li>
                                     </ul>
                                 </div>
-
+                            </p>
+                            <div ng-if="!model.user.username === event.eventCreator">
+                                <a class="btn btn-success btn-block" ng-click="model.participateUser(model.user, event._id)">Participate</a>
                             </div>
+                            <div ng-if="model.user.username === event.eventCreator">
+                                <button id="edit" class="btn btn-success btn-block" data-dismiss="modal" ng-click="model.editEvent(event._id)">Edit</button>
+                                <button class="btn btn-danger btn-block" data-dismiss="modal" ng-click="model.deleteEvent(event._id)">Delete</button>
+                            </div>
+
+                            <label for="comment" class="">Comments</label>
+                            <textarea ng-model="model.user.comment"
+                                      id="comment"
+                                      class="form-control"
+                                      placeholder="Add a comment"/>
+
+                            <a ng-click="model.addComment(model.user, event._id)" class="btn btn-primary btn-block">Comments</a>
+                            <div ng-repeat="comment in model.comments">
+
+                                        <span>
+                                            <i class="fa fa-clock-o">&nbsp;</i>{{comment.dateCreated | date:"h:mma"}}&nbsp;|
+                                        <i class="fa fa-pencil-square-o"><strong>{{comment.userName}} </strong>&nbsp;</i>says:&nbsp;</span>
+
+                                    <p>{{comment.description}}</p>
+
+                                </div>
 
                         </div>
                     </div>
@@ -103,3 +113,14 @@
         </div>
     </footer>
 </nav><!--/#footer-->
+<script type="text/javascript">
+//    alert("Hi");
+//    $('#edit').click(function(e) {
+//        alert("Hi");
+//        e.preventDefault();
+//// Coding
+//         $('#test').modal('hide');
+//        return false;
+//    });
+$("#edit").trigger("click");
+</script>

@@ -1,28 +1,29 @@
 module.exports = function (app,eventModel) {
-    app.get("/api/page/:eventId", findEventById);
+    app.get("/api/event/:eventId", findEventById);
     // app.get("/api/website/:websiteId/page", findAllPagesForWebsite);
     // app.put("/api/page/:pageId", updatePage);
-    // app.delete("/api/page/:pageId", deletePage);
+    app.delete("/api/event/:eventId", deleteEvent);
     app.get("/api/event", findEventsByZip);
     app.post("/api/user/:userId/event", createEvent);
     app.put("/api/event/:eventId", addParticipant);
-    // function deletePage(req, res) {
-    //     var pageId = req.params.pageId;
-    //     pageModel
-    //         .deletePage(pageId)
-    //         .then(function (response) {
-    //             if(response.result.n==1 && response.result.ok==1){
-    //                 res.sendStatus(200);
-    //             }
-    //             else
-    //             {
-    //                 res.sendStatus(404);
-    //             }
-    //         },function (err) {
-    //             res.sendStatus(404);
-    //         });
-    //
-    // }
+
+    function deleteEvent(req, res) {
+        var eventId = req.params.eventId;
+        eventModel
+            .deleteEvent(eventId)
+            .then(function (response) {
+                if(response.result.n==1 && response.result.ok==1){
+                    res.sendStatus(200);
+                }
+                else
+                {
+                    res.sendStatus(404);
+                }
+            },function (err) {
+                res.sendStatus(404);
+            });
+
+    }
 
     function addParticipant(req, res){
         var eventId = req.params.eventId;
@@ -81,7 +82,7 @@ module.exports = function (app,eventModel) {
     }
 
     function findEventById(req, res) {
-        var userId = req.params['userId'];
+        var eventId = req.params['eventId'];
         eventModel
             .findEventById(eventId)
             .then(function (event) {

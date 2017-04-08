@@ -50,11 +50,15 @@
                 controllerAs: "model"
             })
             .when("/user/:uid/restaurant", {
-                templateUrl: "views/events/templates/restaurant.event.view.client.html",
+            templateUrl: "views/events/templates/restaurant.event.view.client.html",
+            controller: "EventsController",
+            controllerAs: "model"
+            })
+            .when("/user/:uid/sport/edit/:eid", {
+                templateUrl: "views/events/templates/edit.event.view.client.html",
                 controller: "EventsController",
                 controllerAs: "model"
             })
-
            .otherwise({
                templateUrl: "views/user/templates/home.view.client.html"
             });

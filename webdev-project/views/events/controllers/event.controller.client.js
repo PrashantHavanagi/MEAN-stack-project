@@ -3,15 +3,29 @@
         .module("WebAppMaker")
         .controller("EventsController", eventController);
 
-    function eventController($routeParams, EventService, UserService, CommentService, $location) {
+    function eventController($routeParams, EventService, UserService, CommentService, $location, $route) {
         var vm = this;
         vm.registerEvent = registerEvent;
         vm.participateUser = participateUser;
         vm.addComment = addComment;
         vm.populateComments = populateComments;
+        vm.editEvent = editEvent;
+        vm.deleteEvent = deleteEvent;
 
         function init() {
             var userId = $routeParams['uid'];
+            var eventId= $routeParams['eid'];
+            if(eventId != undefined){
+            EventService
+                .findEventById(eventId)
+                .success(function(event){
+                    vm.event = event;
+                    vm.event.eventDate = new Date(event.eventDate);
+                })
+                .error(function (err) {
+                    vm.error = 'sorry could not create event';
+                });
+            }
             vm.userId=userId;
             UserService
                 .findUserById(userId)
@@ -29,6 +43,20 @@
                 .error(function (err) {
                     vm.error = 'sorry could not create event';
                 });
+        }
+
+        function deleteEvent(eventId) {
+            $route.reload();
+            EventService.deleteEvent(eventId)
+                .success(function(response){
+                    $route.reload();
+                })
+                .error(function (err) {
+                    vm.error = 'sorry could not delete event';
+                });
+        }
+        function editEvent(eventId) {
+            $location.url("/user/"+vm.userId+"/sport/edit/"+eventId);
         }
 
         function populateComments(eventId) {

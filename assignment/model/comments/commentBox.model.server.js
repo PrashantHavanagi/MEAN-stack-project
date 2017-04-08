@@ -5,7 +5,7 @@ module.exports = function () {
         findComments: findComments,
         // findEventsByZip: findEventsByZip,
         // updateEvent: updateEvent,
-        // deleteEvent: deleteEvent,
+        deleteComment: deleteComment,
         // //deletePageAndChildren: deletePageAndChildren,
         setModel: setModel,
         // addParticipant: addParticipant
@@ -91,12 +91,9 @@ module.exports = function () {
     function updateEvent(eventId, updatedEvent){
         return EventModel.update({_id:eventId},{$set: updatedEvent});
     }
-    function deleteEvent(eventId) {
-
-        return EventModel.findEventById(eventId).populate('_user').then(function (page) {
-            page._website.pages.splice(page._website.pages.indexOf(pageId),1);
-            page._website.save();
-            return deleteChildren(pageId);
+    function deleteComment(eventId) {
+        return CommentModel.remove({eventId:eventId}).then(function (response) {
+            return response;
         }, function (err) {
             return err;
         });
