@@ -34,13 +34,13 @@
 
     <form>
     <div class="form-group">
-        <label for="movie-name" class="">Movie Name</label>
-        <input ng-model="model.event.movieName" id="movie-name" type="text"
+        <label for="movie-name" class="">Restaurant Name</label>
+        <input ng-model="model.event.restuarantName" id="movie-name" type="text"
                class="form-control"
-               placeholder="Movie Name"/>
+               placeholder="Restuarant Name"/>
 
         <label for="image-url">Image URL</label>
-        <input  ng-model="model.widget.url"
+        <input  ng-model="model.event.url"
                 id="image-url"
                 class="form-control"
                 type="text"
@@ -51,11 +51,28 @@
                   class="form-control"
                   id="movie-review"
                   rows="3"></textarea>
+
+        <div class="container">
+            <div class="row">
+                <h2>Working Star Ratings for Bootstrap 3 <small>Hover and click on a star</small></h2>
+            </div>
+            <div class="row lead">
+                <div id="stars" class="starrr"></div>
+                You gave a rating of <span id="count">0</span> star(s)
+            </div>
+
+            <div class="row lead">
+                <p>Also you can give a default rating by adding attribute data-rating</p>
+                <div id="stars-existing" class="starrr" data-rating='4'></div>
+                You gave a rating of <span id="count-existing">4</span> star(s)
+            </div>
+        </div>
+
     </div>
 </form>
 
 <a class="btn btn-primary btn-block"
-   ng-click="model.registerUser(model.user)">Create</a>
+   ng-click="model.registerEvent(model.event, 'SPORT')">Create</a>
 
 <a class="btn btn-danger  btn-block"
    href="#user/{{model.userId}}">Cancel</a>
