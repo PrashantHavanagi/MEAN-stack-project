@@ -26,111 +26,80 @@
     </div><!--/navbar-->
 </header> <!--/#navigation-->
 
-    <div class="container">
-        <div class="row text-center clearfix">
-            <div class="col-sm-8 col-sm-offset-2">
-                <h2 class="title-one">Events</h2>
-                <p class="blog-heading">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-            </div>
+<div class="container">
+    <div class="row text-center clearfix">
+        <div class="col-sm-8 col-sm-offset-2">
+            <h2 class="title-one">Events</h2>
+            <p class="blog-heading">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
         </div>
-        <div class="row">
+    </div>
+    <div class="row">
 
-            <div ng-repeat="event in model.events" class="col-sm-4">
-                <div class="single-blog">
-                    <img ng-src="{{event.url}}" class="img-responsive"/>
-                    <h2>{{event.eventName}}</h2>
-                    <ul class="post-meta">
-                        <li><i class="fa fa-pencil-square-o"></i><strong> Posted By:</strong> {{event.eventCreator}}</li>
-                        <li><i class="fa fa-clock-o"></i><strong> Posted On:</strong> {{event.eventDate | date:"MM/dd/yyyy"}}</li>
-                    </ul>
-                    <div class="blog-content">
-                        <p>{{event.description}}</p>
-                    </div>
-                    <!--<a href="" class="btn btn-primary" data-toggle="modal" data-target="#{{event.eventName}}">Read More</a>-->
-                    <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#{{event.eventName}}">Open Modal</button>-->
-                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#{{event.eventName}}">Read More</a>
-                    <!-- Modal -->
+        <div ng-repeat="event in model.events" class="col-sm-4">
+            <div class="single-blog">
+                <img ng-src="{{event.url}}" class="img-responsive"/>
+                <h2>{{event.eventName}}</h2>
+                <ul class="post-meta">
+                    <li><i class="fa fa-pencil-square-o"></i><strong> Posted By:</strong> {{event.eventCreator}}</li>
+                    <li><i class="fa fa-clock-o"></i><strong> Posted On:</strong> {{event.eventDate | date:"MM/dd/yyyy"}}</li>
+                </ul>
+                <div class="blog-content">
+                    <p>{{event.description}}</p>
                 </div>
-                <div class="modal fade" id="{{event.eventName}}" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <div class="alert alert-success" ng-show="model.message">
-                                    {{model.message}}
-                                </div>
-                                <img ng-src={{event.url}} class="img-responsive" />
-                                <h2>{{event.eventName}}</h2>
-                                <p>{{event.description}}</p>
-                                <p>The event will be held on : {{event.eventDate | date:"MM/dd/yyyy 'at' h:mma"}} and will be played at : {{event.address}}</p>
-
-                                <a class="btn btn-primary btn-block"
-                                   ng-click="model.participateUser(model.user, event._id)">Participate</a>
-
-
-                                <div class="detailBox">
-                                    <div class="titleBox">
-                                        <label>Comment Box</label>
-                                        <button type="button" class="close" aria-hidden="true">&times;</button>
-                                    </div>
-                                    <div class="commentBox">
-
-                                        <p class="taskDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                    </div>
-                                    <div class="actionBox">
-                                        <ul class="commentList">
-                                            <li>
-                                                <div class="commenterImage">
-                                                    <img src="http://placekitten.com/50/50" />
-                                                </div>
-                                                <div class="commentText">
-                                                    <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="commenterImage">
-                                                    <img src="http://placekitten.com/45/45" />
-                                                </div>
-                                                <div class="commentText">
-                                                    <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="commenterImage">
-                                                    <img src="http://placekitten.com/40/40" />
-                                                </div>
-                                                <div class="commentText">
-                                                    <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <form class="form-inline" role="form">
-                                            <div class="form-group">
-                                                <input class="form-control" type="text" placeholder="Your comments" />
-                                            </div>
-                                            <div class="form-group">
-                                                <button class="btn btn-default">Add</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                <!--<a href="" class="btn btn-primary" data-toggle="modal" data-target="#{{event.eventName}}">Read More</a>-->
+                <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#{{event.eventName}}">Open Modal</button>-->
+                <a href="" class="btn btn-primary" ng-click="model.populateComments(event._id)" data-toggle="modal" data-target="#{{event.eventName}}">Read More</a>
+                <!-- Modal -->
+            </div>
+            <div class="modal fade" id="{{event.eventName}}" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <div class="alert alert-success" ng-show="model.message">
+                                {{model.message}}
                             </div>
+                            <img ng-src={{event.url}} class="img-responsive" />
+                            <h2>{{event.eventName}}</h2>
+                            <p>{{event.description}}</p>
+                            <p>The event will be held on : {{event.eventDate | date:"MM/dd/yyyy 'at' h:mma"}} and will be played at : {{event.address}}</p>
+
+                            <a class="btn btn-primary btn-block"
+                               ng-click="model.participateUser(model.user, event._id)">Participate</a>
+
+                            <div class="container-fluid">
+                                <label for="comment" class="">Comments</label>
+                                <textarea ng-model="model.user.comment"
+                                          id="comment"
+                                          class="form-control"
+                                          placeholder="comments"/>
+
+                                <a ng-click="model.addComment(model.user, event._id)" class="btn btn-primary btn-block">Comment</a>
+                                <div ng-repeat="comment in model.comments">
+                                    <ul class="list-group">
+                                            <span><i class="fa fa-pencil-square-o"><strong>Posted By:</strong></i>{{comment.userName}} |
+                                                <i class="fa fa-clock-o"><strong>Posted at: </strong></i>{{comment.dateCreated | date: "h:mma"}}</>
+
+                                        <li class="list-group-item">{{comment.description}}</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
-    </div>
+</div>
 
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <footer id="footer">
-            <div class="container">
-                <div class="text-center">
-                    <p>Copyright &copy; 2017 - <a href="#">Manoj and Prashant </a> | All Rights Reserved</p>
-                </div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <footer id="footer">
+        <div class="container">
+            <div class="text-center">
+                <p>Copyright &copy; 2017 - <a href="#">Manoj and Prashant </a> | All Rights Reserved</p>
             </div>
-        </footer>
-    </nav><!--/#footer-->
+        </div>
+    </footer>
+</nav><!--/#footer-->

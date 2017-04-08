@@ -6,13 +6,14 @@
     function commentService($http) {
 
         var api = {
-            "createComment": createComment,
-           // "deleteUser": deleteUser,
+            "addComment": addComment,
+            // "deleteUser": deleteUser,
             //"updateUser": updateUser,
             // "findEventByCredentials": findEventByCredentials,
             // "findEventById": findEventById,
             // "findEventByUsername": findEventByUsername,
             "findComments": findComments,
+            "findCommentsById": findCommentsById
             // "findEventsByZip":findEventsByZip,
             // "findNearByZipCodes": findNearByZipCodes,
             // addParticipant: addParticipant
@@ -22,9 +23,11 @@
         // function deleteUser(userId) {
         //     return $http.delete('/api/user/'+userId);
         // }
-
-        function createComment(userName, eventId, comment) {
-            return $http.post("/api/comment/"+userName+"/event", event);
+        function findCommentsById(eventId) {
+            return $http.get("/api/comment/"+eventId);
+        }
+        function addComment(user, eventId) {
+            return $http.post("/api/comment/"+eventId, user);
         }
 
         // function findEventByUsername(username) {

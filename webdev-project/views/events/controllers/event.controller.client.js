@@ -3,10 +3,12 @@
         .module("WebAppMaker")
         .controller("EventsController", eventController);
 
-    function eventController($routeParams, EventService, $location, UserService) {
+    function eventController($routeParams, EventService, UserService, CommentService, $location) {
         var vm = this;
         vm.registerEvent = registerEvent;
         vm.participateUser = participateUser;
+        vm.addComment = addComment;
+        vm.populateComments = populateComments;
 
         function init() {
             var userId = $routeParams['uid'];
@@ -26,6 +28,30 @@
                 })
                 .error(function (err) {
                     vm.error = 'sorry could not create event';
+                });
+        }
+
+        function populateComments(eventId) {
+            console.log("In populate");
+            CommentService.findCommentsById(eventId)
+                .success(function(comments){
+                    console.log(comments);
+                    vm.comments = comments;
+                })
+                .error(function (err) {
+                    vm.error = 'sorry could not add comment';
+                });
+        }
+
+        function addComment(user, eventId) {
+            CommentService.addComment(user, eventId)
+                .success(function(comments){
+                    vm.user.comment = "";
+                    console.log(comments);
+                    vm.comments = comments;
+                })
+                .error(function (err) {
+                    vm.error = 'sorry could not add comment';
                 });
         }
 
@@ -53,7 +79,7 @@
                     vm.error = 'something went wrong';
                 });
         }
-        
+
         function participateUser(user, eventId) {
             EventService.addParticipant(user, eventId)
                 .success(function(event){

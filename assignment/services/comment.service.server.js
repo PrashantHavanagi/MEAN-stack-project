@@ -1,9 +1,6 @@
 module.exports = function (app,commentModel) {
-    app.get("/api/comment", findComments);
-    // app.get("/api/user/:userId", findUserByUserId);
-    // app.put("/api/user/:userId", updateUser);
-    // app.delete("/api/user/:userId", deleteUser);
-    app.post("/api/comment", createComment);
+    app.get("/api/comment/:eventId", findCommentsById);
+    app.post("/api/comment/:eventId", createComment);
 
     // function deleteUser(req, res) {
     //     var userId = req.params.userId;
@@ -19,31 +16,34 @@ module.exports = function (app,commentModel) {
 
     function createComment(req, res) {
         var user = req.body;
-
-        var newUser = {
-            username: user.username,
-            password: user.password,
-            email: user.email,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            sports : user.sports,
-            movies : user.movies,
-            rest : user.rest,
-            address: user.address,
-            zipcode: user.zipcode
+        var eventId = req.params['eventId'];
+        var newComment = {
+            eventId: eventId,
+            description: user.comment,
+            imageUrl: user.imageUrl,
+            userName: user.username
         };
-        console.log(newUser);
-        userModel
-            .createUser(newUser)
-            .then(function (newUser) {
-                res.json(newUser);
+        console.log(newComment);
+        commentModel
+            .createComment(newComment)
+            .then(function (comments) {
+                res.json(comments);
             }, function (err) {
-                console.log("Here");
                 res.sendStatus(404).send(err);
             });
 
     }
 
+    function findCommentsById(req, res) {
+        var eventId = req.params['eventId'];
+        commentModel
+            .findCommentsById(eventId)
+            .then(function (comments) {
+                res.json(comments);
+            }, function (err) {
+                res.sendStatus(404).send(err);
+            });
+    }
     // function updateUser(req, res) {
     //     var userId = req.params['userId'];
     //     var newUser = req.body;
@@ -106,20 +106,5 @@ module.exports = function (app,commentModel) {
     //         });
     // }
 
-    function findComments(req, res) {
-        var username = req.query['username'];
-        var password = req.query['password'];
-        userModel
-            .findUserByCredentials(username, password)
-            .then(function (response) {
-                if (response.length != 0) {
-                    res.json(response[0]);
-                }
-                else {
-                    res.sendStatus(404);
-                }
-            }, function (err) {
-                res.sendStatus(404);
-            });
-    }
+
 }

@@ -1,7 +1,7 @@
 module.exports = function () {
     var api = {
         createComment: createComment,
-        // findEventById: findEventById,
+        findCommentsById: findCommentsById,
         findComments: findComments,
         // findEventsByZip: findEventsByZip,
         // updateEvent: updateEvent,
@@ -18,6 +18,9 @@ module.exports = function () {
 
     return api;
 
+    function findCommentsById(eventId) {
+        return CommentModel.find({eventId:eventId}).sort({dateCreated:-1});
+    }
     // function addParticipant(eventId, user){
     //  return model.userModel
     //         .findUserById(user._id)
@@ -37,20 +40,13 @@ module.exports = function () {
     //         });
     // }
 
-    function createComment(userId, newEvent){
-        return EventModel
-            .create(newEvent)
-            .then(function (event) {
-                return model
-                    .userModel
-                    .findUserById(userId)
-                    .then(function (user) {
-                        user.events.push(event);
-                        event._user = user._id;
-                        event.eventCreator = user.username;
-                        user.save();
-                        event.save();
-                        return event;
+    function createComment(newComment){
+        return CommentModel
+            .create(newComment)
+            .then(function (newComment) {
+                return findCommentsById(newComment.eventId)
+                    .then(function (comments) {
+                        return comments;
                     }, function (err) {
                         return err;
                     });
@@ -83,7 +79,7 @@ module.exports = function () {
                 }
                 return EventModel.find(
                     { $and: [ { type: { $in: [type1, type2, type3] } }, { nearByZipcodes: zipcode, eventDate: {"$gte": Date.now()}} ] }
-                    ).then(function (events) {
+                ).then(function (events) {
                     return events;
                 }, function (err) {
                     return err;
