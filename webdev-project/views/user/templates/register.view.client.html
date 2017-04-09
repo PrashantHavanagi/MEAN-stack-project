@@ -11,7 +11,7 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li ><a href="#register">Register</a></li>
+                    <li class="active"><a href="#register">Register</a></li>
                     <li ><a href="#login">Login</a></li>
                     <!--<li ><a href="i">Home</a></li>-->
                     <!--<li class="scroll"><a href="#services">Services</a></li>-->
@@ -35,64 +35,121 @@
     <div ng-show="model.passwordmismatch"
          class="alert alert-danger text-center"
          role="alert"> {{model.passwordmismatch}}</div>
-        <form>
+        <form class="form-horizontal ng-pristine ng-valid ng-valid-email">
             <div class="form-group">
+
+
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="glyphicon glyphicon-option-horizontal"></i>
                     </span>
-                    <input type="text" class="form-control ng-pristine ng-valid ng-touched" placeholder="First Name" ng-model="registerControllerModel.user.firstName" autofocus="">
-                </div>
-                <label for="firstname" class="">First Name</label>
+
                 <input ng-model="model.user.firstName"
                        id="firstname" type="text"
                        class="form-control ng-pristine ng-valid ng-touched"
-                       placeholder="name"/>
+                       placeholder="Firstname"/>
+                </div>
+            </div>
+            <div class="form-group">
 
-                <label for="lastname" class="">Last Name</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-option-horizontal"></i>
+                    </span>
+
                 <input ng-model="model.user.lastName" id="lastname" type="text"
-                       class="form-control"
-                       placeholder="lastName"/>
+                       class="form-control ng-pristine ng-valid ng-touched"
+                       placeholder="LastName"/>
+                </div>
+            </div>
 
-                <label for="email">Email</label>
+            <div class="form-group">
+
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-envelope"></i>
+                    </span>
                 <input type="email"
                            class="form-control"
                            id="email"
                            ng-model="model.user.email"
                            placeholder="Please enter your email address"/>
+                </div>
+            </div>
 
-        <label for="username" class="">Username</label>
+            <div class="form-group">
+
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                    </span>
         <input ng-model="model.user.username" id="username" type="text"
                class="form-control"
                placeholder="username"
                required/>
+                </div>
+            </div>
 
-        <label for="password" class="">Password</label>
+            <div class="form-group">
+
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-lock"></i>
+                    </span>
         <input ng-model="model.user.password" id="password" type="password"
                class="form-control"
                placeholder="password"/>
+                </div>
+            </div>
 
-        <label for="password1" class="">Re-enter Password</label>
+            <div class="form-group">
+
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-lock"></i>
+                    </span>
+
         <input id="password1" type="password"
                ng-model="model.user.passwordverification"
                class="form-control"
                placeholder="verify password"/>
+                </div>
+            </div>
 
-        <label for="address" class="">Address</label>
+            <div class="form-group">
+
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-globe"></i>
+                    </span>
+
         <input ng-model="model.user.address"
                id="address" type="text"
                class="form-control"
                placeholder="Address"
                required/>
+                </div>
+            </div>
 
-        <label for="zipcode" class="">Zipcode</label>
+            <div class="form-group">
+
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-globe"></i>
+                    </span>
+
+
         <input ng-model="model.user.zipcode"
                id="zipcode" type="text"
                class="form-control"
                placeholder="Zipcode"
                required/>
+                </div>
+            </div>
 
-                <label>Your Interests</label>
+            <div class="form-group">
+
+                    <label>Your Interests</label>
                 <div class="checkbox">
                 <label><input  type="checkbox"  ng-model="model.user.sports" name="interest" />Sports</label>
                 </div>
@@ -103,7 +160,10 @@
                     <label><input type="checkbox" ng-model="model.user.rest" name="interest"/>Restuarents</label>
                 </div>
             </div>
+            </div>
         </form>
+
+    <div class="form-group">
         <a class="btn btn-primary btn-block"
            ng-click="model.registerUser(model.user)">Register</a>
 
