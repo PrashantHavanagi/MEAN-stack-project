@@ -37,10 +37,16 @@
          role="alert"> {{model.passwordmismatch}}</div>
         <form>
             <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-option-horizontal"></i>
+                    </span>
+                    <input type="text" class="form-control ng-pristine ng-valid ng-touched" placeholder="First Name" ng-model="registerControllerModel.user.firstName" autofocus="">
+                </div>
                 <label for="firstname" class="">First Name</label>
                 <input ng-model="model.user.firstName"
                        id="firstname" type="text"
-                       class="form-control"
+                       class="form-control ng-pristine ng-valid ng-touched"
                        placeholder="name"/>
 
                 <label for="lastname" class="">Last Name</label>
