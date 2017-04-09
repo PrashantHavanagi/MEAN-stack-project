@@ -8,7 +8,7 @@
         var api = {
             "createEvent": createEvent,
             "deleteEvent": deleteEvent,
-            //"updateUser": updateUser,
+            "updateEvent": updateEvent,
             // "findEventByCredentials": findEventByCredentials,
             "findEventById": findEventById,
             // "findEventByUsername": findEventByUsername,
@@ -35,10 +35,10 @@
         //     return $http.get("/api/user?username="+username+"&password="+password);
         // }
         //
-        // // function updateUser(userId, newUser) {
-        // //     return $http.put("/api/user/"+userId, newUser);
-        // // }
-        //
+        function updateEvent(eventId, event) {
+            return $http.put("/api/updateEvent/"+eventId, event);
+        }
+
         function findEventById(eid) {
             return $http.get("/api/event/"+eid);
         }

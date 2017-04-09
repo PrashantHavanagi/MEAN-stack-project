@@ -82,9 +82,18 @@ module.exports = function () {
                     type3 = "REST";
                 }
                 return EventModel.find(
-                    { $and: [ { type: { $in: [type1, type2, type3] } }, { nearByZipcodes: zipcode, eventDate: {"$gte": Date.now()}} ] }
+                    { $and: [ { type: { $in: [type1, type3] } }, { nearByZipcodes: zipcode, eventDate: {"$gte": Date.now()}} ] }
                     ).then(function (events) {
-                    return events;
+                        console.log(events);
+                    return EventModel.find({ type: type2, eventDate: {"$gte": Date.now()}})
+                        .then(function (movieEvents) {
+                        if(movieEvents[0]){
+                            events.push(movieEvents);
+                        }
+                        return events;
+                    }, function (err) {
+                        return err;
+                    });
                 }, function (err) {
                     return err;
                 });

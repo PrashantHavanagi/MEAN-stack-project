@@ -1,7 +1,7 @@
 module.exports = function (app,eventModel) {
     app.get("/api/event/:eventId", findEventById);
     // app.get("/api/website/:websiteId/page", findAllPagesForWebsite);
-    // app.put("/api/page/:pageId", updatePage);
+    app.put("/api/updateEvent/:eventId", updateEvent);
     app.delete("/api/event/:eventId", deleteEvent);
     app.get("/api/event", findEventsByZip);
     app.post("/api/user/:userId/event", createEvent);
@@ -50,11 +50,11 @@ module.exports = function (app,eventModel) {
             });
     }
 
-    function updatePage(req, res) {
-        var pageId = req.params.pageId;
-        var update = req.body;
-        pageModel
-            .updatePage(pageId,update)
+    function updateEvent(req, res) {
+        var eventId = req.params.eventId;
+        var event = req.body;
+        eventModel
+            .updateEvent(eventId,event)
             .then(function (response) {
                 if (response.ok == 1 && response.n == 1) {
                     res.sendStatus(200);

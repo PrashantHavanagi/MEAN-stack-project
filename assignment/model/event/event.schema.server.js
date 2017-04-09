@@ -11,6 +11,7 @@ module.exports = function() {
         participants :[{type: String}],
         eventDate: Date,
         url: String,
+        rating: Number,
         nearByZipcodes: [{type: String}],
         dateCreated: {type:Date, default: Date.now()}
     }, {collection: "gms.events"});

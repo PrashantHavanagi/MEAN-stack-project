@@ -11,7 +11,7 @@
 
             .when("/home", {
                 templateUrl: "views/user/templates/home.view.client.html",
-                controller: "HomeController",
+                controller: "LoginController",
                 controllerAs: "model"
             })
             .when("/login", {
@@ -29,7 +29,7 @@
             //     controller: "ProfileController",
             //     controllerAs: "model"
             // })
-            .when("/user/:uid", {
+            .when("/user/:uid/events", {
                 templateUrl: "views/events/templates/main.view.client.html",
                 controller: "EventsController",
                 controllerAs: "model"
@@ -55,12 +55,17 @@
             controllerAs: "model"
             })
             .when("/user/:uid/sport/edit/:eid", {
-                templateUrl: "views/events/templates/edit.event.view.client.html",
+                templateUrl: "views/events/templates/sport.edit.view.client.html",
                 controller: "EventsController",
                 controllerAs: "model"
             })
-           .otherwise({
-               templateUrl: "views/user/templates/home.view.client.html"
+            .when("/user/:uid/event/:eid", {
+                templateUrl: "views/events/templates/event.view.client.html",
+                controller: "EventsController",
+                controllerAs: "model"
+            })
+            .otherwise({
+                redirectTo: "/home"
             });
     }
 })();

@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div class="alert alert-success" ng-show="model.message">
+        {{model.message}}
+    </div>
+    <img ng-src={{model.event.url}} class="img-responsive" />
+    <h2>{{model.event.eventName}}</h2>
+    <p>{{model.event.description}}</p>
+    <p>The model.event will be held on : {{model.event.eventDate | date:"MM/dd/yyyy 'at' h:mma"}} and will be played at : {{model.event.address}}</p>
+    <p ng-show="model.event.participants.length">
+        <strong>Participants:</strong>
+    <div ng-repeat="participant in model.event.participants">
+        <ul class="list-group">
+            <li class="list-group-item">{{participant}}</li>
+        </ul>
+    </div>
+    </p>
+    <div ng-if="model.user.username != model.event.eventCreator">
+        <a class="btn btn-success btn-block" ng-click="model.participateUser(model.user, model.event._id)">Participate</a>
+    </div>
+    <div ng-if="model.user.username === model.event.eventCreator">
+        <button id="edit" class="btn btn-success btn-block" data-dismiss="modal" ng-click="model.editEvent(model.event._id)">Edit</button>
+        <button class="btn btn-danger btn-block" data-dismiss="modal" ng-click="model.deleteEvent(model.event._id)">Delete</button>
+    </div>
+
+    <label for="comment" class="">Comments</label>
+    <textarea ng-model="model.user.comment"
+              id="comment"
+              class="form-control"
+              placeholder="Add a comment"/>
+
+    <a ng-click="model.addComment(model.user, model.event._id)" class="btn btn-primary btn-block">Comments</a>
+    <div ng-repeat="comment in model.comments">
+        <span>
+            <i class="fa fa-clock-o">&nbsp;</i>{{comment.dateCreated | date:"h:mma"}}&nbsp;|
+            <i class="fa fa-pencil-square-o"><strong>{{comment.userName}} </strong>&nbsp;</i>says:&nbsp;
+        </span>
+
+        <p>{{comment.description}}</p>
+
+    </div>
+
+</div>
