@@ -11,11 +11,19 @@
         "findUserByCredentials":findUserByCredentials,
         "deleteUser":deleteUser,
         "updateUser":updateUser,
-        "setModel":setModel
+        "setModel":setModel,
+        "findUserByFacebookId": findUserByFacebookId,
+        "findUserByGoogleId":findUserByGoogleId
     };
 
     return api;
 
+        function findUserByFacebookId(facebookId) {
+            return UserModel.findOne({'facebook.id': facebookId});
+        }
+        function findUserByGoogleId(googleId) {
+            return UserModel.findOne({'google.id': googleId});
+        }
     function createUser(user) {
 
         delete user._id;

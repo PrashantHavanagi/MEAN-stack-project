@@ -59,7 +59,12 @@
             {{model.message}}
         </div>
 
+        <div class="row wbdev-profile-heading text-center">
+            Welcome {{model.user.firstName}}
+        </div>
+
         <form>
+
             <div class="form-group">
                 <label for="first-name">First Name</label>
                 <input ng-model="model.user.firstName" type="text" class="form-control" id="first-name" placeholder="Gary">

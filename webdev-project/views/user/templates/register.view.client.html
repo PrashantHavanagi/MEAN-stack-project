@@ -29,10 +29,17 @@
 
 
 <div class="container-fluid">
+    <div ng-show="model.registrationerror"
+         class="alert alert-danger text-center"
+         role="alert"> {{model.registrationerror}}</div>
+    <div ng-show="model.passwordmismatch"
+         class="alert alert-danger text-center"
+         role="alert"> {{model.passwordmismatch}}</div>
         <form>
             <div class="form-group">
                 <label for="firstname" class="">First Name</label>
-                <input ng-model="model.user.firstName" id="firstname" type="text"
+                <input ng-model="model.user.firstName"
+                       id="firstname" type="text"
                        class="form-control"
                        placeholder="name"/>
 
@@ -51,8 +58,8 @@
         <label for="username" class="">Username</label>
         <input ng-model="model.user.username" id="username" type="text"
                class="form-control"
-               placeholder="username"/>
-
+               placeholder="username"
+               required/>
 
         <label for="password" class="">Password</label>
         <input ng-model="model.user.password" id="password" type="password"
@@ -61,6 +68,7 @@
 
         <label for="password1" class="">Re-enter Password</label>
         <input id="password1" type="password"
+               ng-model="model.user.passwordverification"
                class="form-control"
                placeholder="verify password"/>
 
@@ -68,13 +76,15 @@
         <input ng-model="model.user.address"
                id="address" type="text"
                class="form-control"
-               placeholder="Address"/>
+               placeholder="Address"
+               required/>
 
         <label for="zipcode" class="">Zipcode</label>
         <input ng-model="model.user.zipcode"
                id="zipcode" type="text"
                class="form-control"
-               placeholder="Zipcode"/>
+               placeholder="Zipcode"
+               required/>
 
                 <label>Your Interests</label>
                 <div class="checkbox">

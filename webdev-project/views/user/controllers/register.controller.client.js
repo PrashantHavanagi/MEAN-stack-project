@@ -8,6 +8,23 @@
         vm.registerUser = registerUser;
 
         function registerUser(user) {
+            if(user == null){
+                vm.registrationerror = "Please enter your details";
+                return;
+            }
+            if(user.username == null || user.email == null || user.password == null ){
+                vm.registrationerror = "Please enter your username, email and password";
+                return;
+            }
+            if(user.address ==null || user.zipcode==null) {
+                vm.registrationerror = "Please enter your address and zipcode";
+                return;
+            }
+            if (user.password != user.passwordverification){
+                vm.registrationerror ="";
+                vm.passwordmismatch = "Passwords do not match";
+                return;
+            }
             UserService
                 .findUserByUsername(user.username)
                 .success(function (user) {
@@ -17,7 +34,7 @@
                     UserService
                         .createUser(user)
                         .success(function(user){
-                            $location.url("/user/"+user._id);
+                            $location.url("/user/"+user._id+"/events");
                         })
                         .error(function () {
                             vm.error = 'sorry could not register';
