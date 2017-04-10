@@ -10,7 +10,7 @@
 
     </a>
     <p>{{model.event.description}}</p>
-    <p>The model.event will be held on : {{model.event.eventDate | date:"MM/dd/yyyy 'at' h:mma"}} and will be played at : {{model.event.address}}</p>
+    <p>The {{model.event.eventName}} will be held on : {{model.event.eventDate | date:"MM/dd/yyyy 'at' h:mma"}} and will be played at : {{model.event.address}}</p>
     <p ng-show="model.event.participants.length">
         <strong>Participants:</strong>
     <div ng-repeat="participant in model.event.participants">
