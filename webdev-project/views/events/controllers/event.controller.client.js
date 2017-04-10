@@ -17,17 +17,7 @@
         function init() {
             var userId = $routeParams['uid'];
             var eventId= $routeParams['eid'];
-            if(eventId != undefined){
-            EventService
-                .findEventById(eventId)
-                .success(function(event){
-                    vm.event = event;
-                    vm.event.eventDate = new Date(event.eventDate);
-                })
-                .error(function (err) {
-                    vm.error = 'sorry could not create event';
-                });
-            }
+            vm.eventId = eventId;
             vm.userId=userId;
             UserService
                 .findUserById(userId)
@@ -38,22 +28,7 @@
         function renderUser(user) {
             vm.user = user;
             console.log(user);
-            if(vm.event != undefined && vm.user.likedEvents.indexOf(vm.event._id) !== -1) {
-                vm.userLiked = 1;
-            }
-            else{
-                vm.userLiked = 0;
-            }
-            if(vm.event != undefined){
-                CommentService.findCommentsById(vm.event._id)
-                    .success(function(comments){
-                        console.log(comments);
-                        vm.event.comments = comments;
-                    })
-                    .error(function (err) {
-                        vm.error = 'sorry error in Comments';
-                    });
-            }
+            getEventDetails();
             EventService.findEventsByZip(user)
                 .success(function(events){
                     console.log(events);
@@ -64,6 +39,33 @@
                 });
         }
 
+        function getEventDetails() {
+            if(vm.eventId != undefined){
+                EventService
+                    .findEventById(vm.eventId)
+                    .success(function(event){
+                        vm.event = event;
+                        vm.event.eventDate = new Date(event.eventDate);
+                        if(vm.user.likedEvents.indexOf(vm.event._id) !== -1) {
+                            vm.userLiked = 1;
+                        }
+                        else{
+                            vm.userLiked = 0;
+                        }
+                        CommentService.findCommentsById(vm.event._id)
+                            .success(function(comments){
+                                console.log(comments);
+                                vm.event.comments = comments;
+                            })
+                            .error(function (err) {
+                                vm.error = 'sorry error in Comments';
+                            });
+                    })
+                    .error(function (err) {
+                        vm.error = 'sorry could not create event';
+                    });
+            }
+        }
         function doLike(user, eventId) {
             if (vm.userLiked == 1) {
                 delete vm.userLiked;
