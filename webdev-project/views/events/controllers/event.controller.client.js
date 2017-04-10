@@ -142,6 +142,7 @@
         }
 
         function registerEvent(event, type) {
+            event.dateCreated = Date.now();
             event.type = type;
             if(type == "MOVIE"){
                 event.eventDate = new Date();
