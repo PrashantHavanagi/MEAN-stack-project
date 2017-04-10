@@ -4,6 +4,11 @@
     </div>
     <img ng-src={{model.event.url}} class="img-responsive" />
     <h2>{{model.event.eventName}}</h2>
+    <a ng-click="model.doLike(model.user, model.event._id)">
+        <i class="glyphicon" ng-class="(model.userLiked==1) ? 'glyphicon-heart' : 'glyphicon-heart-empty'"></i>
+        <span>{{model.event.likes}}</span>
+
+    </a>
     <h4>Review:</h4>
     <p>{{model.event.description}}</p>
     <h4>Reviewed By:</h4>

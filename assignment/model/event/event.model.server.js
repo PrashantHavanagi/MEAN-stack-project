@@ -8,7 +8,8 @@ module.exports = function () {
         deleteEvent: deleteEvent,
         //deletePageAndChildren: deletePageAndChildren,
         setModel: setModel,
-        addParticipant: addParticipant
+        addParticipant: addParticipant,
+        updateLike: updateLike
     };
 
     var mongoose = require('mongoose');
@@ -17,6 +18,31 @@ module.exports = function () {
     var EventModel = mongoose.model('EventModel', EventSchema);
 
     return api;
+
+    function updateLike(user, eventId, op) {
+        return model.userModel
+            .findUserById(user._id)
+            .then(function (user) {
+                return EventModel.findOne({_id:eventId})
+                    .then(function (event) {
+                        if(op == 'sub'){
+                            event.likes -= 1;
+                            user.likedEvents.splice(user.likedEvents.indexOf(eventId), 1);
+                        }
+                        else{
+                            event.likes += 1;
+                            user.likedEvents.push(eventId);
+                        }
+                        event.save();
+                        user.save();
+                        return event;
+                    }, function (err) {
+                        return err;
+                    });
+            }, function (err) {
+                return err;
+            });
+    }
 
     function addParticipant(eventId, user){
      return model.userModel

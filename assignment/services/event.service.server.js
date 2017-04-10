@@ -6,6 +6,21 @@ module.exports = function (app,eventModel) {
     app.get("/api/event", findEventsByZip);
     app.post("/api/user/:userId/event", createEvent);
     app.put("/api/event/:eventId", addParticipant);
+    app.put("/api/like", updateLike);
+
+    function updateLike(req, res) {
+        var op = req.query['op'];
+        var eventId = req.query['eventId'];
+        var user = req.body;
+        eventModel
+            .updateLike(user, eventId, op)
+            .then(function (event) {
+                res.json(event);
+            }, function (err) {
+                console.log(err);
+                res.sendStatus(404);
+            });
+    }
 
     function deleteEvent(req, res) {
         var eventId = req.params.eventId;

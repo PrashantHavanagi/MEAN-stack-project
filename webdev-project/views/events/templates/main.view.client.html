@@ -46,11 +46,8 @@
                     <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#{{event.eventName}}">Open Modal</button>-->
                     <a href="" class="btn btn-primary" ng-click="model.showEvent(event)">Read More</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a ng-click="model.doLike(model.userId, event._id)">
-                        <i class="glyphicon" ng-class="(model.userVotes==1) ? 'glyphicon-heart' : 'glyphicon-heart-empty'"></i>
-                        <span>{{model.votes}}</span>
+                    Likes:&nbsp;{{event.likes}}
 
-                    </a>
                     <!-- Modal -->
                 </div>
             </div>

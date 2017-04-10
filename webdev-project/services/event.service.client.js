@@ -20,8 +20,8 @@
         };
         return api;
 
-        function doLike(userId, eventId, op) {
-
+        function doLike(user, eventId, op) {
+            return $http.put("/api/like?eventId="+eventId+"&op="+op, user);
         }
         function deleteEvent(eventId) {
             return $http.delete('/api/event/'+eventId);

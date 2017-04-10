@@ -4,6 +4,11 @@
     </div>
     <img ng-src={{model.event.url}} class="img-responsive" />
     <h2>{{model.event.eventName}}</h2>
+    <a ng-click="model.doLike(model.user, model.event._id)">
+        <i class="glyphicon" ng-class="(model.userLiked==1) ? 'glyphicon-heart' : 'glyphicon-heart-empty'"></i>
+        <span>{{model.event.likes}}</span>
+
+    </a>
     <p>{{model.event.description}}</p>
     <p>The model.event will be held on : {{model.event.eventDate | date:"MM/dd/yyyy 'at' h:mma"}} and will be played at : {{model.event.address}}</p>
     <p ng-show="model.event.participants.length">

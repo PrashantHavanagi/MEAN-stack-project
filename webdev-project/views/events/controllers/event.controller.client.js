@@ -5,7 +5,6 @@
 
     function eventController($routeParams, EventService, UserService, CommentService, $location) {
         var vm = this;
-        vm.votes = 0;
         vm.registerEvent = registerEvent;
         vm.participateUser = participateUser;
         vm.addComment = addComment;
@@ -39,6 +38,13 @@
         function renderUser(user) {
             vm.user = user;
             console.log(user);
+            if(vm.event != undefined && vm.user.likedEvents.indexOf(vm.event._id) !== -1) {
+                console.log("Liked");
+                vm.userLiked = 1;
+            }
+            else{
+                vm.userLiked = 0;
+            }
             EventService.findEventsByZip(user)
                 .success(function(events){
                     console.log(events);
@@ -49,21 +55,27 @@
                 });
         }
 
-        function doLike(userId, eventId) {
-            if (vm.userVotes == 1) {
-                delete vm.userVotes;
-                EventService.doLike(userId, eventId, 'sub')
-                    .success(function(events){
-                        console.log(events);
-                        vm.events = events;
+        function doLike(user, eventId) {
+            if (vm.userLiked == 1) {
+                delete vm.userLiked;
+                EventService.doLike(user, eventId, 'sub')
+                    .success(function(event){
+                        console.log(event.likes);
+                        vm.event.likes = event.likes;
                     })
                     .error(function (err) {
                         vm.error = 'sorry could not create event';
                     });
-                vm.votes--;
             } else {
-                vm.userVotes = 1;
-                vm.votes++;
+                vm.userLiked = 1;
+                EventService.doLike(user, eventId, 'add')
+                    .success(function(event){
+                        console.log(event.likes);
+                        vm.event.likes = event.likes;
+                    })
+                    .error(function (err) {
+                        vm.error = 'sorry could not create event';
+                    });
             }
         }
 
