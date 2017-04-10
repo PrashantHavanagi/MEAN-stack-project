@@ -13,7 +13,7 @@
         vm.editEvent = editEvent;
         vm.deleteEvent = deleteEvent;
         vm.updateEvent = updateEvent;
-        vm.doVote = doVote;
+        vm.doLike = doLike;
 
         function init() {
             var userId = $routeParams['uid'];
@@ -49,10 +49,17 @@
                 });
         }
 
-        function doVote() {
-
+        function doLike(userId, eventId) {
             if (vm.userVotes == 1) {
                 delete vm.userVotes;
+                EventService.doLike(userId, eventId, 'sub')
+                    .success(function(events){
+                        console.log(events);
+                        vm.events = events;
+                    })
+                    .error(function (err) {
+                        vm.error = 'sorry could not create event';
+                    });
                 vm.votes--;
             } else {
                 vm.userVotes = 1;

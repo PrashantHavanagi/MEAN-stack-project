@@ -36,7 +36,6 @@
             vm.user = user;
             console.log(user);
         }
-//vm.update = function updateUser(newUser)
          function updateUser(newUser) {
             UserService
                 .updateUser(userId, newUser)

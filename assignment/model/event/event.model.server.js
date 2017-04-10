@@ -87,8 +87,9 @@ module.exports = function () {
                         console.log(events);
                     return EventModel.find({ type: type2, eventDate: {"$gte": Date.now()}})
                         .then(function (movieEvents) {
+                            console.log(movieEvents);
                         if(movieEvents[0]){
-                            events.push(movieEvents);
+                            events = events.concat(movieEvents);
                         }
                         return events;
                     }, function (err) {

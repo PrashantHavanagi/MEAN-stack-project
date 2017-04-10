@@ -14,6 +14,7 @@ module.exports = function() {
         sports: Boolean,
         movies: Boolean,
         rest: Boolean,
+        likedEvents: [{type: mongoose.Schema.Types.ObjectId, ref: 'EventModel'}],
         dateCreated: {type:Date, default: Date.now()}
     }, {collection: "gms.users"});
     return UserSchema;

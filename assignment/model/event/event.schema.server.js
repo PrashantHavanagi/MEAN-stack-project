@@ -12,6 +12,7 @@ module.exports = function() {
         eventDate: Date,
         url: String,
         rating: Number,
+        likes:{type: Number, default:0},
         nearByZipcodes: [{type: String}],
         dateCreated: {type:Date, default: Date.now()}
     }, {collection: "gms.events"});

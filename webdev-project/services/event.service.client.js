@@ -15,10 +15,14 @@
             "findNearByZipCodes": findNearByZipCodes,
             "findEventsByZip":findEventsByZip,
             "findNearByZipCodes": findNearByZipCodes,
-            addParticipant: addParticipant
+            addParticipant: addParticipant,
+            doLike: doLike
         };
         return api;
 
+        function doLike(userId, eventId, op) {
+
+        }
         function deleteEvent(eventId) {
             return $http.delete('/api/event/'+eventId);
         }

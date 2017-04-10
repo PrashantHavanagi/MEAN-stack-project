@@ -13,12 +13,6 @@
                     <li ><a href="#/user/{{model.userId}}/sport">Create</a></li>
                     <li class="scroll"><a href="#our-team">Competitions</a></li>
                     <li class="scroll"><a href="#/user/{{model.user._id}}/profile">Profile</a></li>
-
-
-                    <!--<li class="scroll"><a href="#portfolio">Portfolio</a></li>
-                    <!--<li class="scroll"><a href="#clients">Clients</a></li>-->
-                    <!--<li class="scroll"><a href="#blog">Blog</a></li>-->
-                    <!--<li class="scroll"><a href="#contact">Contact</a></li>-->
                 </ul>
             </div>
         </div>
@@ -26,15 +20,15 @@
 </header> <!--/#navigation-->
 
 <div class="container">
-
     <ul class="nav nav-tabs">
         <li role="presentation"><a href="#/user/{{model.userId}}/sport">Sport Event</a></li>
-        <li role="presentation" class="active"><a href="#/user/{{model.userId}}/movie">Movie Review</a></li>
-        <li role="presentation"><a href="#/user/{{model.userId}}/restaurant">Restaurant Review</a></li>
+        <li role="presentation"><a href="#/user/{{model.userId}}/movie">Movie Review</a></li>
+        <li role="presentation" class="active"><a href="#/user/{{model.userId}}/restaurant">Restaurant Review</a></li>
     </ul>
 
     <form>
-        <div class="form-group">
+        <div class="form-group" >
+
             <label for="movie-name" class="">Movie Name</label>
             <input ng-model="model.event.eventName" id="movie-name" type="text"
                    class="form-control"
@@ -48,18 +42,43 @@
                     placeholder="Image URL"/>
 
             <label for="movie-review">Write a Review</label>
-            <textarea ng-model="model.event.review"
+            <textarea ng-model="model.event.description"
                       class="form-control"
                       id="movie-review"
                       rows="3"></textarea>
+
+            <label>Rate it</label><br>
+            <fieldset class="rating" >
+                <input type="radio" ng-model="model.event.rating" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                <input type="radio" ng-model="model.event.rating" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                <input type="radio" ng-model="model.event.rating" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                <input type="radio" ng-model="model.event.rating" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                <input type="radio" ng-model="model.event.rating" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                <input type="radio" ng-model="model.event.rating" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                <input type="radio" ng-model="model.event.rating" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                <input type="radio" ng-model="model.event.rating" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                <input type="radio" ng-model="model.event.rating" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                <input type="radio" ng-model="model.event.rating" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+            </fieldset>
         </div>
+
+
     </form>
+
+    <br>
+
     <a class="btn btn-primary btn-block"
-       ng-click="model.registerUser(model.user)">Create</a>
+       ng-click="model.registerEvent(model.event, 'MOVIE')">Create</a>
 
     <a class="btn btn-danger  btn-block"
        href="#user/{{model.userId}}">Cancel</a>
+
+
+
 </div>
+
+
+
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
