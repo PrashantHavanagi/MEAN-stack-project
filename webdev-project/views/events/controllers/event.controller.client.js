@@ -39,11 +39,20 @@
             vm.user = user;
             console.log(user);
             if(vm.event != undefined && vm.user.likedEvents.indexOf(vm.event._id) !== -1) {
-                console.log("Liked");
                 vm.userLiked = 1;
             }
             else{
                 vm.userLiked = 0;
+            }
+            if(vm.event != undefined){
+                CommentService.findCommentsById(vm.event._id)
+                    .success(function(comments){
+                        console.log(comments);
+                        vm.event.comments = comments;
+                    })
+                    .error(function (err) {
+                        vm.error = 'sorry error in Comments';
+                    });
             }
             EventService.findEventsByZip(user)
                 .success(function(events){
@@ -118,23 +127,15 @@
         }
 
         function showEvent(event) {
-            CommentService.findCommentsById(event._id)
-                .success(function(comments){
-                    vm.event = event;
-                    console.log(event);
-                    vm.comments = comments;
-                    $location.url("/user/"+vm.userId+"/event/"+event._id);
-                })
-                .error(function (err) {
-                    vm.error = 'sorry could not add comment';
-                });
+            vm.event = event;
+            $location.url("/user/"+vm.userId+"/event/"+event._id);
         }
 
         function addComment(user, eventId) {
             CommentService.addComment(user, eventId)
                 .success(function(comments){
                     vm.user.comment = "";
-                    vm.comments = comments;
+                    vm.event.comments = comments;
                 })
                 .error(function (err) {
                     vm.error = 'sorry could not add comment';

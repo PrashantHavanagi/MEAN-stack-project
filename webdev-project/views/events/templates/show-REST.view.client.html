@@ -40,7 +40,7 @@
               placeholder="Add a comment"/>
 
     <a ng-click="model.addComment(model.user, model.event._id)" class="btn btn-primary btn-block">Comments</a>
-    <div ng-repeat="comment in model.comments">
+    <div ng-repeat="comment in model.event.comments">
         <span>
             <i class="fa fa-clock-o">&nbsp;</i>{{comment.dateCreated | date:"h:mma"}}&nbsp;|
             <i class="fa fa-pencil-square-o"><strong>{{comment.userName}} </strong>&nbsp;</i>says:&nbsp;
