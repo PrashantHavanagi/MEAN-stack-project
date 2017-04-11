@@ -69,14 +69,13 @@
 
         </form>
 
-        <a class="btn btn-primary btn-block"
-           href="#/user/{{model.user._id}}/events">Events</a>
+        <a class="btn btn-primary btn-block" ng-click="model.updateUser(model.user)">Update</a>
 
         <a ng-click="model.unregisterUser(model.user)" class="btn btn-danger btn-block">Delete</a>
 
         <a class="btn btn-danger  btn-block"
            href="#login">Logout</a>
-        <a ng-click="model.updateUser(model.user)"class="btn btn-default  btn-block">Update</a>
+
     </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <footer id="footer">

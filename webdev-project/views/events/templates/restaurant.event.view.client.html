@@ -21,9 +21,9 @@
 
 <div class="container">
     <ul class="nav nav-tabs">
-        <li role="presentation"><a href="#/user/{{model.userId}}/sport">Sport Event</a></li>
-        <li role="presentation"><a href="#/user/{{model.userId}}/movie">Movie Review</a></li>
-        <li role="presentation" class="active"><a href="#/user/{{model.userId}}/restaurant">Restaurant Review</a></li>
+        <li ng-if="model.user.sports" role="presentation"><a href="#/user/{{model.userId}}/sport">Sport Event</a></li>
+        <li ng-if="model.user.movies" role="presentation"><a href="#/user/{{model.userId}}/movie">Movie Review</a></li>
+        <li ng-if="model.user.rest" role="presentation" class="active"><a href="#/user/{{model.userId}}/restaurant">Restaurant Review</a></li>
     </ul>
 
     <form>

@@ -7,6 +7,18 @@ module.exports = function (app,eventModel) {
     app.post("/api/user/:userId/event", createEvent);
     app.put("/api/event/:eventId", addParticipant);
     app.put("/api/like", updateLike);
+    app.get("/api/events", findEvents);
+
+    function findEvents(req, res) {
+        eventModel
+            .findEvents()
+            .then(function (events) {
+                res.json(events);
+            }, function (err) {
+                console.log(err);
+                res.sendStatus(404);
+            });
+    }
 
     function updateLike(req, res) {
         var op = req.query['op'];

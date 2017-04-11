@@ -40,7 +40,7 @@
             UserService
                 .updateUser(userId, newUser)
                 .success(function (response) {
-                    vm.message = "user successfully updated"
+                    $location.url("/user/" + userId+"/events");
                 })
                 .error(function () {
                     vm.error = "unable to update user";

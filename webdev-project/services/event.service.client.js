@@ -9,14 +9,13 @@
             "createEvent": createEvent,
             "deleteEvent": deleteEvent,
             "updateEvent": updateEvent,
-            // "findEventByCredentials": findEventByCredentials,
             "findEventById": findEventById,
-            // "findEventByUsername": findEventByUsername,
             "findNearByZipCodes": findNearByZipCodes,
             "findEventsByZip":findEventsByZip,
             "findNearByZipCodes": findNearByZipCodes,
-            addParticipant: addParticipant,
-            doLike: doLike
+            "addParticipant": addParticipant,
+            "doLike": doLike,
+            "findEvents": findEvents
         };
         return api;
 
@@ -31,14 +30,10 @@
             return $http.post("/api/user/"+userId+"/event", event);
         }
 
-        // function findEventByUsername(username) {
-        //     return $http.get("/api/user?username="+username);
-        // }
-        //
-        // function findEventByCredentials(username, password) {
-        //     return $http.get("/api/user?username="+username+"&password="+password);
-        // }
-        //
+        function findEvents() {
+            return $http.get("/api/events");
+        }
+
         function updateEvent(eventId, event) {
             return $http.put("/api/updateEvent/"+eventId, event);
         }

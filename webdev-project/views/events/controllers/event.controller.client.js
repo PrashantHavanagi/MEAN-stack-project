@@ -28,6 +28,15 @@
         function renderUser(user) {
             vm.user = user;
             console.log(user);
+            if(user.sports){
+                vm.eventHref = "#/user/"+user._id+"/sport";
+            }
+            else if(user.movies){
+                vm.eventHref = "#/user/"+user._id+"/movie";
+            }
+            else{
+                vm.eventHref = "#/user/"+user._id+"/restaurant";
+            }
             getEventDetails();
             EventService.findEventsByZip(user)
                 .success(function(events){

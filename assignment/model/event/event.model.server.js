@@ -6,10 +6,10 @@ module.exports = function () {
         findEventsByZip: findEventsByZip,
         updateEvent: updateEvent,
         deleteEvent: deleteEvent,
-        //deletePageAndChildren: deletePageAndChildren,
         setModel: setModel,
         addParticipant: addParticipant,
-        updateLike: updateLike
+        updateLike: updateLike,
+        findEvents: findEvents
     };
 
     var mongoose = require('mongoose');
@@ -90,6 +90,9 @@ module.exports = function () {
     function findEventById(eventId){
         return EventModel.findOne({_id:eventId});
     }
+    function findEvents() {
+        return EventModel.find().sort({dateCreated:-1});
+    }
     function findEventsByZip(zipcode, userId){
         console.log(userId);
         return model.userModel
@@ -161,40 +164,6 @@ module.exports = function () {
             .then(function (user) {
                 user.events.splice(user.events.indexOf(eventId), 1);
                 return deleteParticipantsAndComment(participants,eventId)
-            }, function (err) {
-                return err;
-            });
-    }
-
-    function deleteAll(widgetsOfPage, pageId) {
-        if(widgetsOfPage.length == 0){
-
-            return EventModel.remove({_id: pageId})
-                .then(function (response) {
-                    if(response.result.n == 1 && response.result.ok == 1){
-                        return response;
-                    }
-                }, function (err) {
-                    return err;
-                });
-        }
-
-        return model.widgetModel.deleteWidgetOfPage(widgetsOfPage.shift())
-            .then(function (response) {
-                if(response.result.n == 1 && response.result.ok == 1){
-                    return deleteAll(widgetsOfPage, pageId);
-                }
-            }, function (err) {
-                return err;
-            });
-    }
-
-    function deleteChildren(pageId) {
-
-        return EventModel.findById({_id: pageId})
-            .then(function (page) {
-                var widgetsOfPage = page.widgets;
-                return deleteAll(widgetsOfPage, pageId);
             }, function (err) {
                 return err;
             });
