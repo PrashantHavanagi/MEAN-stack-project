@@ -11,7 +11,18 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li ><a href="#/user/{{model.userId}}/events">Events</a></li>
                     <li class="active" ><a href="#/user/{{model.userId}}/sport">Host an Event</a></li>
-                    <li class="scroll"><a href="#/user/{{model.user._id}}/profile">Profile</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#/user/{{model.user._id}}/profile"><i class="fa fa-user fa-fw"></i> My Account</a>
+                            </li>
+                            <li><a href="#login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
                 </ul>
             </div>
         </div>
@@ -19,48 +30,95 @@
 </header> <!--/#navigation-->
 
 <div class="container">
+    <div class="form-group" >
     <ul class="nav nav-tabs">
         <li ng-if="model.user.sports" role="presentation"><a href="#/user/{{model.userId}}/sport">Sport Event</a></li>
         <li ng-if="model.user.movies" role="presentation"><a href="#/user/{{model.userId}}/movie">Movie Review</a></li>
         <li ng-if="model.user.rest" role="presentation" class="active"><a href="#/user/{{model.userId}}/restaurant">Restaurant Review</a></li>
     </ul>
+    </div>
 
     <form>
-    <div class="form-group" >
+        <div class="form-group" >
 
-        <label for="movie-name" class="">Restaurant Name</label>
+            <div class="input-group">
+                    <span class="input-group-addon">
+
+                        <i class="glyphicon glyphicon-cutlery"></i>
+                    </span>
         <input ng-model="model.event.eventName" id="movie-name" type="text"
                class="form-control"
                placeholder="Restuarant Name"/>
+            </div>
+        </div>
 
-        <label for="image-url">Image URL</label>
+        <div class="form-group" >
+
+            <div class="input-group">
+                    <span class="input-group-addon">
+
+                        <i class="glyphicon glyphicon-picture"></i>
+                    </span>
         <input  ng-model="model.event.url"
                 id="image-url"
                 class="form-control"
                 type="text"
                 placeholder="Image URL"/>
+            </div>
+        </div>
 
-        <label for="movie-review">Write a Review</label>
+        <div class="form-group" >
+
+            <div class="input-group">
+                    <span class="input-group-addon">
+
+                        <i class="glyphicon glyphicon-text-width"></i>
+                    </span>
         <textarea ng-model="model.event.description"
                   class="form-control"
                   id="movie-review"
+                  placeholder="Restaurant review"
                   rows="3"></textarea>
+            </div>
+        </div>
 
-        <label for="image-url">Restaurant Address</label>
+        <div class="form-group" >
+
+            <div class="input-group">
+                    <span class="input-group-addon">
+
+                        <i class="glyphicon glyphicon-globe"></i>
+                    </span>
         <input  ng-model="model.event.address"
                 id="address"
                 class="form-control"
                 type="text"
                 placeholder="Address"/>
+            </div>
+        </div>
 
-        <label for="zipcode">Zip Code</label>
+        <div class="form-group" >
+
+            <div class="input-group">
+                    <span class="input-group-addon">
+
+                        <i class="glyphicon glyphicon-globe"></i>
+                    </span>
         <input  ng-model="model.event.zipcode"
                 id="zipcode"
                 class="form-control"
                 type="text"
                 placeholder="Zip Code"/>
+            </div>
+        </div>
 
-        <label>Rate it</label><br>
+        <div class="form-group" >
+
+            <div class="input-group">
+                    <span class="input-group-addon">
+
+                        <i class="glyphicon glyphicon-star"></i>
+                    </span>
         <fieldset class="rating" >
             <input type="radio" ng-model="model.event.rating" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
             <input type="radio" ng-model="model.event.rating" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
@@ -73,13 +131,9 @@
             <input type="radio" ng-model="model.event.rating" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
             <input type="radio" ng-model="model.event.rating" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
         </fieldset>
-</div>
-
-
-</form>
-
-<br>
-
+            </div>
+        </div>
+    </form>
 <a class="btn btn-primary btn-block"
    ng-click="model.registerEvent(model.event, 'REST')">Create</a>
 

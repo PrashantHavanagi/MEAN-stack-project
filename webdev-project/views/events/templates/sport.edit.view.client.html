@@ -11,7 +11,18 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="#/user/{{model.userId}}/events">Events</a></li>
                     <li ><a href="#/user/{{model.userId}}/sport">Host an Event</a></li>
-                    <li class="scroll"><a href="#/user/{{model.user._id}}/profile">Profile</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#/user/{{model.user._id}}/profile"><i class="fa fa-user fa-fw"></i> My Account</a>
+                            </li>
+                            <li><a href="#login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
 
 
                     <!--<li class="scroll"><a href="#portfolio">Portfolio</a></li>
@@ -23,60 +34,95 @@
         </div>
     </div><!--/navbar-->
 </header> <!--/#navigation-->
-
+<div class="form-group text-primary text-center">
+<h4 class="btn-group-justified">Make changes to the event !</h4>
+</div>
 <div class="container-fluid">
-    <form>
+    <form class="form-horizontal ng-pristine ng-valid ng-valid-email">
+
         <div class="form-group">
-            <label for="sport-name" class="">Sport Event Name</label>
+            <label for="sport-name" class="col-sm-2 control-label">Sport Event Name</label>
+            <div class="col-sm-10">
             <input ng-model="model.event.eventName" id="sport-name" type="text"
                    class="form-control"
                    placeholder="Sport Name"/>
+            </div>
+        </div>
 
-            <label for="image-url">Image URL</label>
+        <div class="form-group">
+            <label for="image-url" class="col-sm-2 control-label">Image URL</label>
+            <div class="col-sm-10">
             <input  ng-model="model.event.url"
                     id="image-url"
                     class="form-control"
                     type="text"
                     placeholder="Image URL"/>
+            </div>
+        </div>
 
-            <label for="sport-review">Description</label>
+        <div class="form-group">
+            <label for="sport-review" class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-10">
             <textarea ng-model="model.event.description"
                       class="form-control"
                       id="sport-review"
                       rows="3"></textarea>
+            </div>
+        </div>
 
-            <label for="image-url">Address</label>
+        <div class="form-group">
+            <label for="image-url" class="col-sm-2 control-label">Address</label>
+            <div class="col-sm-10">
             <input  ng-model="model.event.address"
                     id="address"
                     class="form-control"
                     type="text"
                     placeholder="Address"/>
+            </div>
+        </div>
 
-            <label for="zipcode">Zip Code</label>
+        <div class="form-group">
+
+            <label for="zipcode" class="col-sm-2 control-label">Zip Code</label>
+            <div class="col-sm-10">
             <input  ng-model="model.event.zipcode"
                     id="zipcode"
                     class="form-control"
                     type="text"
                     placeholder="Zip Code"/>
+            </div>
+        </div>
 
-            <label for="da">Date</label>
+        <div class="form-group">
+
+            <label for="da" class="col-sm-2 control-label">Date</label>
+            <div class="col-sm-10">
             <input type="date" ng-model="model.event.eventDate"
                    class="form-control"
                    id="da"/>
+            </div>
+        </div>
 
-            <label for="ti">Time</label>
+        <div class="form-group">
+            <label for="ti" class="col-sm-2 control-label">Time</label>
+            <div class="col-sm-10">
             <input type="time" ng-model="model.event.eventDate"
                    class="form-control"
                    id="ti"/>
+            </div>
         </div>
+
     </form>
-</div>
+
+
+<div class="col-sm-offset-2 col-sm-10">
 
 <a class="btn btn-primary btn-block"
    ng-click="model.updateEvent(model.event)">Update</a>
 
 <a class="btn btn-danger  btn-block"
    href="#user/{{model.userId}}">Cancel</a>
+</div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
