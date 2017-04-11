@@ -10,8 +10,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="#/user/{{model.userId}}/events">Events</a></li>
-                    <li ><a href="#/user/{{model.userId}}/sport">Create</a></li>
-                    <li class="scroll"><a href="#our-team">Competitions</a></li>
+                    <li><a ng-href="{{model.eventHref}}">Create</a></li>
                     <li class="scroll"><a href="#/user/{{model.user._id}}/profile">Profile</a></li>
 
                 </ul>
