@@ -26,14 +26,14 @@
         <button id="edit" class="btn btn-success btn-block" data-dismiss="modal" ng-click="model.editEvent(model.event._id)">Edit</button>
         <button class="btn btn-danger btn-block" data-dismiss="modal" ng-click="model.deleteEvent(model.event._id)">Delete</button>
     </div>
-
+<div class="form-group">
     <label for="comment" class="">Comments</label>
     <textarea ng-model="model.user.comment"
               id="comment"
               class="form-control"
               placeholder="Add a comment"/>
-
-    <a ng-click="model.addComment(model.user, model.event._id)" class="btn btn-primary btn-block">Comments</a>
+</div>
+    <a ng-click="model.addComment(model.user, model.event._id)" class="btn btn-primary btn-block">Comment</a>
     <div ng-repeat="comment in model.event.comments">
         <span>
             <i class="fa fa-clock-o">&nbsp;</i>{{comment.dateCreated | date:"h:mma"}}&nbsp;|

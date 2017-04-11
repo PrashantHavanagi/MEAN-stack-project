@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="#/user/{{model.userId}}/events">Events</a></li>
-                    <li><a ng-href="{{model.eventHref}}">Create</a></li>
+                    <li><a ng-href="{{model.eventHref}}">Host an event</a></li>
                     <li class="scroll"><a href="#/user/{{model.user._id}}/profile">Profile</a></li>
 
                 </ul>
@@ -34,7 +34,8 @@
             <br>
             <div ng-repeat="event in model.events | filter:searchText" class="col-sm-4">
                 <div class="single-blog">
-                    <img ng-src="{{event.url}}" class="img-responsive"/>
+                    <div class="center-cropped">
+                    <img ng-src="{{event.url}}" class="img-responsive"/></div>
                     <h2>{{event.eventName}}</h2>
                     <ul class="post-meta">
                         <li><i class="fa fa-pencil-square-o"></i><strong> Posted By:</strong> {{event.eventCreator}}</li>
@@ -64,4 +65,5 @@
             </div>
         </div>
     </footer>
+
 </nav>
