@@ -11,6 +11,7 @@
         "findUserByCredentials":findUserByCredentials,
         "deleteUser":deleteUser,
         "updateUser":updateUser,
+        "findAllUsers": findAllUsers,
         "setModel":setModel,
         // "findUserByFacebookId": findUserByFacebookId,
         // "findUserByGoogleId":findUserByGoogleId
@@ -24,6 +25,11 @@
         // function findUserByGoogleId(googleId) {
         //     return UserModel.findOne({'google.id': googleId});
         // }
+
+    function findAllUsers() {
+        return UserModel.find().sort({dateCreated:-1});
+    }
+
     function createUser(user) {
 
         delete user._id;

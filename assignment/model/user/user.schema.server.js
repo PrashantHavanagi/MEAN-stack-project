@@ -10,6 +10,7 @@ module.exports = function() {
         phone: String,
         address: String,
         zipcode: String,
+        role: {type: String, enum: ['ADMIN', 'USER'], default: 'USER'},
         events: [{type: mongoose.Schema.Types.ObjectId, ref: 'EventModel'}],
         sports: Boolean,
         movies: Boolean,

@@ -24,11 +24,14 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            // .when("/user/:uid", {
-            //     templateUrl: "views/user/templates/profile.view.client.html",
-            //     controller: "ProfileController",
-            //     controllerAs: "model"
-            // })
+            .when('/admin/:uid', {
+                templateUrl: 'views/admin/templates/admin.view.client.html',
+                controller: 'AdminController',
+                controllerAs: 'model',
+                resolve: {
+                    //adminUser: isAdmin
+                }
+            })
             .when("/user/:uid/events", {
                 templateUrl: "views/events/templates/main.view.client.html",
                 controller: "EventsController",
@@ -68,4 +71,15 @@
                 redirectTo: "/home"
             });
     }
+    // function isAdmin(UserService, $location) {
+    //     UserService
+    //         .isAdmin()
+    //         .then(function (user) {
+    //             if(user == '0') {
+    //                 $location.url('/admin')
+    //             } else {
+    //                 $location.url("/user/" + user._id+"/events");
+    //             }
+    //         });
+    // }
 })();

@@ -109,6 +109,8 @@ module.exports = function (app,userModel) {
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
     app.post("/api/user", createUser);
+    app.post('/api/isAdmin', isAdmin);
+    app.get('/api/allUsers', findAllUsers);
 
     // function localStrategy(username, password, done) {
     //     userModel
@@ -154,6 +156,19 @@ module.exports = function (app,userModel) {
     //             }
     //         );
     // }
+
+    function isAdmin(req, res) {
+        res.send(req.user.role == 'ADMIN' ? req.user : '0');
+    }
+    function findAllUsers(req, res) {
+        userModel
+            .findAllUsers()
+            .then(function (users) {
+                res.json(users);
+            }, function (err) {
+                res.sendStatus(404).send(err);
+            });
+    }
 
     function deleteUser(req, res) {
         var userId = req.params.userId;

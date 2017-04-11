@@ -12,9 +12,21 @@
             "findUserByCredentials": findUserByCredentials,
             "findUserById": findUserById,
             "findUserByUsername": findUserByUsername,
+            "isAdmin": isAdmin,
+            "findAllUser": findAllUser
         };
         return api;
 
+        function findAllUser() {
+            return $http.get("/api/allUsers");
+        }
+
+        function isAdmin() {
+            return $http.post('/api/isAdmin')
+                .then(function (response) {
+                    return response.data;
+                });
+        }
         function deleteUser(userId) {
             return $http.delete('/api/user/'+userId);
         }

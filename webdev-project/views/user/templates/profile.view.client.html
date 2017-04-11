@@ -11,8 +11,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li ><a href="#/user/{{model.userId}}/events">Events</a></li>
                     <li ><a href="#/user/{{model.userId}}/sport">Host an event</a></li>
-                    <li class="scroll active"><a href="#/user/{{model.user._id}}/profile">Profile</a></li>
-
+                    <li class="scroll active"><a href="#/user/{{model.userId}}/profile">Profile</a></li>
+                    <li ng-if="model.user.role == 'ADMIN'"><a href="#/admin/{{model.userId}}">Admin</a></li>
                 </ul>
             </div>
         </div>

@@ -33,7 +33,12 @@
                     .success(function (user) {
                         var loginUser = user;
                         if (loginUser != null) {
-                            $location.url("/user/" + user._id+"/events");
+                            if(loginUser.role == "ADMIN"){
+                                $location.url("/admin/"+ user._id);
+                            }
+                            else{
+                                $location.url("/user/" + user._id+"/events");
+                            }
                         } else {
 
                             vm.registrationerror = 'user not found';
