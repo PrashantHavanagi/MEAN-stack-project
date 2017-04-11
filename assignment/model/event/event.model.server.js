@@ -91,7 +91,7 @@ module.exports = function () {
         return EventModel.findOne({_id:eventId});
     }
     function findEvents() {
-        return EventModel.find().sort({dateCreated:-1});
+        return EventModel.find({eventDate: {"$gte": Date.now()}}).sort({dateCreated:-1});
     }
     function findEventsByZip(zipcode, userId){
         console.log(userId);
