@@ -9,7 +9,8 @@ module.exports = function () {
         setModel: setModel,
         addParticipant: addParticipant,
         updateLike: updateLike,
-        findEvents: findEvents
+        findEvents: findEvents,
+        findEventsbyCreator: findEventsbyCreator
     };
 
     var mongoose = require('mongoose');
@@ -19,6 +20,9 @@ module.exports = function () {
 
     return api;
 
+    function findEventsbyCreator(userId) {
+        return EventModel.find({_user:userId});
+    }
     function updateLike(user, eventId, op) {
         return model.userModel
             .findUserById(user._id)
@@ -155,7 +159,7 @@ module.exports = function () {
                         },
                         function (err) {
                             return err;
-                        })
+                        });
                 }, function (err) {
                     return err;
                 });
