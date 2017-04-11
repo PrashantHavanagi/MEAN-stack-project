@@ -39,39 +39,32 @@
         return UserModel.find({username:_username, password: _password});
     }
 
-    function deleteAll(websitesOfUser, userId) {
-        if(websitesOfUser.length == 0){
-
-            return UserModel.remove({_id: userId})
-                .then(function (response) {
-                    if(response.result.n == 1 && response.result.ok == 1){
-                        return response;
-                    }
+    function deleteUser(userId) {
+        return model.eventModel.findEventsbyCreator(userId)
+            .then(function (events) {
+                var eventsForUser = events;
+                return deleteAll(eventsForUser, userId);
+            }, function (err) {
+                return err;
+            });
+    }
+        function deleteAll(events, userId) {
+            if(events.length == 0){
+                return UserModel.remove({_id:userId})
+                    .then(function (response) {
+                            return response;
+                        },
+                        function (err) {
+                            return err;
+                        });
+            }
+            model.eventModel.deleteEvent(events.shift()._id)
+                .then(function (res) {
+                    return deleteAll(events, userId)
                 }, function (err) {
-                   return err;
+                    return err;
                 });
         }
-
-        return model.websiteModel.deleteChildren(websitesOfUser.shift())
-            .then(function (response) {
-                if(response.result.n == 1 && response.result.ok == 1){
-                    return deleteAll(websitesOfUser, userId);
-                }
-            }, function (err) {
-                return err;
-            });
-    }
-
-    function deleteUser(userId) {
-        
-        return UserModel.findById({_id: userId})
-            .then(function (user) {
-                var websitesOfUser = user.websites;
-                return deleteAll(websitesOfUser, userId);
-            }, function (err) {
-                return err;
-            });
-    }
     function updateUser(userId, updatedUser) {
         return UserModel.update({_id:userId},{$set:updatedUser});
     }

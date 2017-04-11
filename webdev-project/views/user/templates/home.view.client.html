@@ -21,15 +21,14 @@
 
    <div class="container-fluid">
        <div class="row text-center clearfix">
-           <div class="col-sm-8 col-sm-offset-2">
-               <h2 class="title-one">Events</h2>
-               <p class="blog-heading">Search for the events in which you are interested..</p>
-           </div>
+           <h3>See the events in which you are interested..</h3>
        </div>
        <div class="row">
             <div ng-repeat="event in model.events" class="col-sm-4">
                <div class="single-blog">
-                   <img ng-src="{{event.url}}" class="img-responsive"/>
+                   <div class="center-cropped">
+                       <img ng-src="{{event.url}}" class="img-responsive"/>
+                   </div>
                    <h2>{{event.eventName}}</h2>
                    <ul class="post-meta">
                        <li><i class="fa fa-pencil-square-o"></i><strong> Posted By:</strong> {{event.eventCreator}}</li>
@@ -38,6 +37,9 @@
                    Likes:&nbsp;{{event.likes}}
                </div>
            </div>
+       </div>
+       <div class="row text-center clearfix">
+           <h4>For more details Register or Login</h4>
        </div>
    </div>
 
