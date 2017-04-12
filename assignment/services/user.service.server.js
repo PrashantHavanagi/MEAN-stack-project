@@ -3,8 +3,62 @@ module.exports = function (app,userModel) {
     var bcrypt = require("bcrypt-nodejs");
     var passport = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
+    var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+    var googleConfig = {
+        clientID     : "443973802430-i4mhia8if7haptvhfurv3g6fkh6h49jj.apps.googleusercontent.com",
+        clientSecret : "c6Mx_UpYAxrutQzvp15j1iZz",
+        callbackURL  : "http://localhost:3000/auth/google/callback"
+    };
 
     passport.use(new LocalStrategy(localStrategy));
+    passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+
+
+    function googleStrategy(token, refreshToken, profile, done) {
+        userModel
+            .findUserByGoogleId(profile.id)
+            .then(
+                function(user) {
+                    if(user) {
+                        return done(null, user);
+                    } else {
+                        var email = profile.emails[0].value;
+                        var emailParts = email.split("@");
+                        var newGoogleUser = {
+                            username:  emailParts[0],
+                            firstName: profile.name.givenName,
+                           //address:profile.name.address,
+                            lastName:  profile.name.familyName,
+                            email:     email,
+                            google: {
+                                id:    profile.id,
+                                token: token
+                            }
+                        };
+                        return userModel
+                            .createUser(newGoogleUser)
+                            .then(function (user) {
+                                return done(null, user);
+                            });
+                    }
+                },
+                function(err) {
+                    if (err) { return done(err); }
+                });
+    }
+
+    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+    app.get('/auth/google/callback',
+        passport.authenticate('google', {
+            failureRedirect: '#/login'
+        }), function(req, res){
+                console.log("here");
+            var url = '/#/user/'+req.user._id.toString()+'/profile';
+
+
+            res.redirect(url);
+        });
 
     app.post("/api/login", passport.authenticate('local'), login);
     app.post('/api/logout',logout);
