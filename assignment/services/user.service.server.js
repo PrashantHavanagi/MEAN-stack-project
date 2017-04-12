@@ -51,6 +51,7 @@ module.exports = function (app,userModel) {
         res.json(user);
     }
     function logout(req, res) {
+        console.log("successfully logged out");
         req.logOut();
         res.sendStatus(200);
     }

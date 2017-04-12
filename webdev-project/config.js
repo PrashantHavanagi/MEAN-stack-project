@@ -3,6 +3,17 @@
         .module("WebAppMaker")
         .config(configuration);
 
+    var checkLoggedIn = function($q, $timeout, $http, $location, $rootScope) {
+        return $http.get('/api/loggedin').success(function(user) {
+            $rootScope.errorMessage = null;
+            if (user !== '0') {
+                $rootScope.currentUser = user;
+            } else{
+                $location.url('/login');
+            }
+        });
+    };
+
     function configuration($routeProvider, $httpProvider) {
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
         $httpProvider.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
@@ -35,7 +46,8 @@
             .when("/user/:uid/events", {
                 templateUrl: "views/events/templates/main.view.client.html",
                 controller: "EventsController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: { loggedin: checkLoggedIn }
             })
             .when("/user/:uid/profile", {
                 templateUrl: "views/user/templates/profile.view.client.html",

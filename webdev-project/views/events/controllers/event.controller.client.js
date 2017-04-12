@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("EventsController", eventController);
 
-    function eventController($routeParams, EventService, UserService, CommentService, $location) {
+    function eventController($routeParams, EventService, UserService, CommentService, $location,$rootScope) {
         var vm = this;
         vm.registerEvent = registerEvent;
         vm.participateUser = participateUser;
@@ -13,6 +13,17 @@
         vm.deleteEvent = deleteEvent;
         vm.updateEvent = updateEvent;
         vm.doLike = doLike;
+
+        vm.logout = logout;
+
+        function logout() {
+            UserService
+                .logout()
+                .then(function (response) {
+                    $rootScope.currentUser = null;
+                    $location.url("/login");
+                });
+        }
 
         function init() {
             var userId = $routeParams['uid'];
