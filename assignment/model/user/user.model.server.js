@@ -13,16 +13,16 @@
         "updateUser":updateUser,
         "findAllUsers": findAllUsers,
         "setModel":setModel,
-        "findUserByGoogleId":findUserByGoogleId
-        // "findUserByFacebookId": findUserByFacebookId,
+        "findUserByGoogleId":findUserByGoogleId,
+        "findUserByFacebookId": findUserByFacebookId
 
     };
 
     return api;
 
-        // function findUserByFacebookId(facebookId) {
-        //     return UserModel.findOne({'facebook.id': facebookId});
-        // }
+        function findUserByFacebookId(facebookId) {
+            return UserModel.findOne({'facebook.id': facebookId});
+        }
         function findUserByGoogleId(googleId) {
             return UserModel.findOne({'google.id': googleId});
         }

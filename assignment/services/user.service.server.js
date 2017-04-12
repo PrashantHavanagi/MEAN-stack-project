@@ -4,7 +4,14 @@ module.exports = function (app,userModel) {
     var passport = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
     var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+    var FacebookStrategy = require('passport-facebook').Strategy;
 
+    var facebookConfig = {
+        clientID: "1908741509411603",
+        clientSecret: "3232c2091ac80365858442b3cbfab8dd",
+        callbackURL: "http://localhost:3000/auth/facebook/callback",
+        profileFields: ['id','displayName', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified']
+    };
     var googleConfig = {
         clientID     : "443973802430-i4mhia8if7haptvhfurv3g6fkh6h49jj.apps.googleusercontent.com",
         clientSecret : "c6Mx_UpYAxrutQzvp15j1iZz",
@@ -13,6 +20,49 @@ module.exports = function (app,userModel) {
 
     passport.use(new LocalStrategy(localStrategy));
     passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+
+    app.get('/auth/facebook',passport.authenticate('facebook',{ scope : 'email'}));
+    app.get('/auth/facebook/callback',passport.authenticate('facebook', {
+        failureRedirect: '#/login'
+    }), function(req, res){
+        var url = '/#/user/'+req.user._id.toString()+'/profile';
+        res.redirect(url);
+    });
+
+    function facebookStrategy(token, refreshToken, profile, done) {
+        userModel
+            .findUserByFacebookId(profile.id)
+            .then(function(user) {
+                    if(user) {
+                        // If User exists
+                        return done(null, user);
+                    } else {
+                        var email = profile.emails[0].value;
+                        var emailParts = email.split("@");
+                        var names = profile.displayName.split(" ");
+                        var newFacebookUser = {
+                            firstName:  names[0],
+                            lastName:  names[1],
+                            username:  emailParts[0],
+                            facebook: {
+                                id:    profile.id,
+                                token: token
+                            },
+                            email: profile.emails[0].value
+                        };
+                        userModel
+                            .createUser(newFacebookUser)
+                            .then(function (user) {
+                                return done(null, user);
+                            });
+                    }
+                },
+                function(err) {
+                    if (err) { return done(err); }
+                });
+    }
+
 
 
     function googleStrategy(token, refreshToken, profile, done) {
