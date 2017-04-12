@@ -42,7 +42,13 @@
         function deleteUser(user) {
             UserService
                 .deleteUser(user._id)
-                .then(findAllUsers);
+                .success(function(events){
+                    findAllUsers();
+                    findAllEvents();
+                })
+                .error(function (err) {
+                    model.error = 'sorry could not create event';
+                });
         }
         
         function renderUsers(users) {
