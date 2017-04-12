@@ -21,7 +21,7 @@
                 .logout()
                 .then(function (response) {
                     $rootScope.currentUser = null;
-                    $location.url("/login");
+                    $location.url("/home");
                 });
         }
 

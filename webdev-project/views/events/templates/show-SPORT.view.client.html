@@ -14,9 +14,8 @@
     <p ng-show="model.event.participants.length">
         <strong>Participants:</strong>
     <div ng-repeat="participant in model.event.participants">
-        <ul class="list-group">
-            <li class="list-group-item">{{participant}}</li>
-        </ul>
+    <li>{{participant}}</li>
+
     </div>
     </p>
     <div ng-if="model.user.username != model.event.eventCreator">
