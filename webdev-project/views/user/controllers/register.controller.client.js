@@ -26,7 +26,7 @@
                 vm.passwordmismatch = "Passwords do not match";
                 return;
             }
-            if (user.sports == null && user.movies==null && user.rest==null){
+            if (!newUser.sports && !newUser.movies && !newUser.rest){
                 vm.registrationerror ="please add an interest";
                // vm.passwordmismatch = "Passwords do not match";
                 return;
