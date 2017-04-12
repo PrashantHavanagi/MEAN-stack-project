@@ -3,8 +3,8 @@
 
 
 .center-cropped {
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
 	background-position: center center;
 	background-repeat: no-repeat;
 }
@@ -1348,7 +1348,9 @@ h1, h2, h3, h4, h5, h6 {
   animation: fadeInDown 300ms linear 300ms both;
 }
 
-
+.dropdown-toggle{
+	background-color:#fff !important;
+}
 /*==================================
 ====== Isotope Recommended CSS=====
 ====================================*/

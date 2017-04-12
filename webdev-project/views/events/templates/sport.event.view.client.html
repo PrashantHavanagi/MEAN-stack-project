@@ -11,66 +11,128 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li ><a href="#/user/{{model.userId}}/events">Events</a></li>
                     <li class="active"><a href="#/user/{{model.userId}}/sport">Host an Event</a></li>
-                    <li class="scroll"><a href="#/user/{{model.user._id}}/profile">Profile</a></li>
-                    <li ng-if="model.user.role == 'ADMIN'"><a href="#/admin/{{model.userId}}">Admin</a></li>                </ul>
+                    <li ng-if="model.user.role == 'ADMIN'"><a href="#/admin/{{model.userId}}">Admin</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#/user/{{model.user._id}}/profile"><i class="fa fa-user fa-fw"></i> My Account</a>
+                            </li>
+                            <li><a href="#login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
+                </ul>
             </div>
         </div>
     </div><!--/navbar-->
 </header> <!--/#navigation-->
 
 <div class="container">
+    <div class="form-group">
     <ul class="nav nav-tabs">
         <li ng-if="model.user.sports" role="presentation" class="active"><a href="#/user/{{model.userId}}/sport">Sport Event</a></li>
         <li ng-if="model.user.movies" role="presentation"><a href="#/user/{{model.userId}}/movie">Movie Review</a></li>
         <li ng-if="model.user.rest" role="presentation"><a href="#/user/{{model.userId}}/restaurant">Restaurant Review</a></li>
     </ul>
+    </div>
 
 
         <form>
             <div class="form-group">
-                <label for="sport-name" class="">Sport Event Name</label>
-                <input ng-model="model.event.eventName" id="sport-name" type="text"
-                       class="form-control"
-                       placeholder="Sport Name"/>
+                <div class="input-group">
+                    <span class="input-group-addon">
 
-                <label for="image-url">Image URL</label>
+                        <i class="glyphicon glyphicon-king"></i>
+                    </span>
+
+                    <input ng-model="model.event.eventName" id="sport-name" type="text"
+                           class="form-control"
+                           placeholder="Sport Event Name"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-picture"></i>
+                    </span>
+
                 <input  ng-model="model.event.url"
                         id="image-url"
                         class="form-control"
                         type="text"
                         placeholder="Image URL"/>
+                </div>
+            </div>
 
-                <label for="sport-review">Description</label>
+                <div class="form-group">
+                    <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-text-width"></i>
+                    </span>
+
                 <textarea ng-model="model.event.description"
                           class="form-control"
                           id="sport-review"
+                          placeholder="Enter the event description"
                           rows="3"></textarea>
+                    </div>
+                </div>
 
-                <label for="image-url">Address</label>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-globe"></i>
+                    </span>
                 <input  ng-model="model.event.address"
                         id="address"
                         class="form-control"
                         type="text"
                         placeholder="Address"/>
+                </div>
+            </div>
 
-                <label for="zipcode">Zip Code</label>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-globe"></i>
+                    </span>
                 <input  ng-model="model.event.zipcode"
                         id="zipcode"
                         class="form-control"
                         type="text"
                         placeholder="Zip Code"/>
+                </div>
+            </div>
 
-                <label for="da">Date</label>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </span>
+
                 <input type="date" ng-model="model.event.eventDate"
                        class="form-control"
                        id="da"/>
+                </div>
+            </div>
 
-                <label for="ti">Time</label>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-time"></i>
+                    </span>
+
                 <input type="time" ng-model="model.event.eventDate"
                        class="form-control"
                        id="ti"/>
+                </div>
             </div>
         </form>
+
 
     <a class="btn btn-primary btn-block"
        ng-click="model.registerEvent(model.event, 'SPORT')">Create</a>
