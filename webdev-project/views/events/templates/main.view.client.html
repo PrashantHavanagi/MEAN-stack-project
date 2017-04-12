@@ -45,9 +45,9 @@
             <br>
             <div ng-repeat="event in model.events | filter:searchText" class="col-sm-4">
                 <div class="single-blog">
-                    <!--<div class="center-cropped">-->
+                    <div class="center-cropped">
                     <img ng-src="{{event.url}}" class="img-responsive"/>
-                <!--</div>-->
+                    </div>
                     <h2>{{event.eventName}}</h2>
                     <ul class="post-meta">
                         <li><i class="fa fa-pencil-square-o"></i><strong> Posted By:</strong> {{event.eventCreator}}</li>
