@@ -26,6 +26,12 @@
                 vm.passwordmismatch = "Passwords do not match";
                 return;
             }
+            if (user.interest == null){
+                vm.registrationerror ="please add an interest";
+               // vm.passwordmismatch = "Passwords do not match";
+                return;
+            }
+
             UserService
                 .findUserByUsername(user.username)
                 .success(function (user) {
