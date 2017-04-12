@@ -41,7 +41,7 @@
                  vm.registrationerror = "Please enter your details";
                  return;
              }
-             if(newUser.username == null || newUser.email == null || newUser.password == null ){
+             if(newUser.username == null || newUser.email == null){
                  vm.registrationerror = "Please enter your username, email and password";
                  return;
              }
