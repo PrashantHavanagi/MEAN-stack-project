@@ -31,7 +31,6 @@
     }
 
     function createUser(user) {
-
         delete user._id;
         return UserModel.create(user);
     }
@@ -39,7 +38,7 @@
         return UserModel.findById(userId);
     }
     function findUserbyUsername(username) {
-        return UserModel.find({"username":username});
+        return UserModel.findOne({"username":username});
     }
     function findUserByCredentials(_username, _password) {
         return UserModel.find({username:_username, password: _password});

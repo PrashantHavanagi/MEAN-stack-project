@@ -12,6 +12,10 @@
             "findUserByCredentials": findUserByCredentials,
             "findUserById": findUserById,
             "findUserByUsername": findUserByUsername,
+            "login":login,
+            "logout":logout,
+            "register":register,
+
             "isAdmin": isAdmin,
             "findAllUser": findAllUser
         };
@@ -27,6 +31,20 @@
                     return response.data;
                 });
         }
+
+
+        function login(user) {
+            return $http.post("/api/login", user);
+        }
+
+        function logout() {
+            return $http.post("/api/logout");
+        }
+
+        function register(user) {
+            return $http.post("/api/register", user);
+        }
+
         function deleteUser(userId) {
             return $http.delete('/api/user/'+userId);
         }
