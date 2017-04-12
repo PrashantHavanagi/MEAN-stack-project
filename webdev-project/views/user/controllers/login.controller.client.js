@@ -36,7 +36,12 @@
                     var user = response.data;
                     $rootScope.currentUser = user;
                     console.log("cant redirect now");
-                    $location.url("/user/"+user._id+"/events");
+                    if(user.role == "ADMIN"){
+                        $location.url("/admin/"+ user._id);
+                    }
+                    else{
+                        $location.url("/user/"+user._id+"/events");
+                    }
                 },function (err) {
                     vm.error = "Username/password does not match";
                 });
