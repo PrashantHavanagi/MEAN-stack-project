@@ -1,45 +1,8 @@
-<header id="navigation">
-    <div class="navbar navbar-inverse navbar-fixed-top" role="banner">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#/user/{{model.userId}}/events"><h1><img src="images/logo2.png" alt="logo"></h1></a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li ><a href="#/user/{{model.userId}}/events">Events</a></li>
-                    <li class="active"><a href="#/user/{{model.userId}}/sport">Host an Event</a></li>
-                    <li ng-if="model.user.role == 'ADMIN'"><a href="#/admin/{{model.userId}}">Admin</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#/user/{{model.user._id}}/profile"><i class="fa fa-user fa-fw"></i> My Account</a>
-                            </li>
-                            <li><a ng-click="model.logout()"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                            </li>
-                        </ul>
-                        <!-- /.dropdown-user -->
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div><!--/navbar-->
-</header> <!--/#navigation-->
-
-<div class="container">
-    <div class="form-group" >
-    <ul class="nav nav-tabs">
-        <li ng-if="model.user.sports" role="presentation"><a href="#/user/{{model.userId}}/sport">Sport Event</a></li>
-        <li ng-if="model.user.movies" role="presentation" class="active"><a href="#/user/{{model.userId}}/movie">Movie Review</a></li>
-        <li ng-if="model.user.rest" role="presentation"><a href="#/user/{{model.userId}}/restaurant">Restaurant Review</a></li>
-    </ul>
-    </div>
-
-    <form>
+<div class="form-group text-primary text-center">
+    <h4 class="btn-group-justified">Make changes to the movie review !</h4>
+</div>
+<div class="container-fluid">
+    <form class="form-horizontal ng-pristine ng-valid ng-valid-email">
         <div class="form-group" >
 
                 <div class="input-group">
@@ -107,32 +70,12 @@
             </fieldset>
         </div>
         </div>
-
-
-    </form>
+     </form>
 
     <br>
 
     <a class="btn btn-primary btn-block"
-       ng-click="model.registerEvent(model.event, 'MOVIE')">Create</a>
-
+       ng-click="model.updateEvent(model.event)">Update</a>
     <a class="btn btn-danger  btn-block"
        href="#user/{{model.userId}}/events">Cancel</a>
-
-
-
 </div>
-
-
-
-
-
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <footer id="footer">
-        <div class="container">
-            <div class="text-center">
-                <p>Copyright &copy; 2017 - <a href="#">Manoj and Prashant </a> | All Rights Reserved</p>
-            </div>
-        </div>
-    </footer>
-</nav>

@@ -70,8 +70,8 @@
             controller: "EventsController",
             controllerAs: "model"
             })
-            .when("/user/:uid/sport/edit/:eid", {
-                templateUrl: "views/events/templates/sport.edit.view.client.html",
+            .when("/user/:uid/event/edit/:eid", {
+                templateUrl: "views/events/templates/editors/event.edit.view.client.html",
                 controller: "EventsController",
                 controllerAs: "model"
             })

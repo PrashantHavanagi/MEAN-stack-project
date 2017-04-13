@@ -71,7 +71,7 @@
                         if(event.type == 'REST'){
                             eventAdress = event.eventName+" ";
                         }
-                        eventAdress += event.address;
+                        eventAdress += event.address + " " + event.zipcode;
                         var userAdress = vm.user.address;
                         // vm.source = $sce.trustAsResourceUrl("//www.google.com/maps/embed/v1/place?q="+adress+"&zoom=13&attribution_source=Google+Maps+Embed+API&attribution_web_url=https://developers.google.com/maps/documentation/embed/ &key=AIzaSyC2hDsxuScggdqETcFmGCk4HC_16W5zv7A");
                         vm.source = $sce.trustAsResourceUrl("//www.google.com/maps/embed/v1/directions?origin="+userAdress+"&destination="+eventAdress+"&key=AIzaSyANw0wlspxQEEv2GUhEXe-gZ78kHx64OtE");
@@ -121,25 +121,36 @@
         }
 
         function updateEvent(event) {
-            EventService.findNearByZipCodes(event.zipcode)
-                .success(function(result){
-                    var zipcodes = [];
-                    var zipcodesArr = result.zip_codes;
-                    for(var index in zipcodesArr){
-                        zipcodes.push(zipcodesArr[index].zip_code);
-                    }
-                    event.nearByZipcodes = zipcodes;
-                    EventService.updateEvent(event._id, event)
-                        .success(function(response){
-                            $location.url("/user/"+vm.userId+"/events");
-                        })
-                        .error(function (err) {
-                            vm.error = 'sorry could not delete event';
-                        });
-                })
-                .error(function (err) {
-                    vm.error = 'something went wrong';
-                });
+            if(event.type == 'MOVIE'){
+                EventService.updateEvent(event._id, event)
+                    .success(function(response){
+                        $location.url("/user/"+vm.userId+"/events");
+                    })
+                    .error(function (err) {
+                        vm.error = 'sorry could not update event';
+                    });
+            }
+            else{
+                EventService.findNearByZipCodes(event.zipcode)
+                    .success(function(result){
+                        var zipcodes = [];
+                        var zipcodesArr = result.zip_codes;
+                        for(var index in zipcodesArr){
+                            zipcodes.push(zipcodesArr[index].zip_code);
+                        }
+                        event.nearByZipcodes = zipcodes;
+                        EventService.updateEvent(event._id, event)
+                            .success(function(response){
+                                $location.url("/user/"+vm.userId+"/events");
+                            })
+                            .error(function (err) {
+                                vm.error = 'sorry could not update event';
+                            });
+                    })
+                    .error(function (err) {
+                        vm.error = 'something went wrong';
+                    });
+            }
         }
 
         function deleteEvent(eventId) {
@@ -155,7 +166,7 @@
             }
         }
         function editEvent(eventId) {
-            $location.url("/user/"+vm.userId+"/sport/edit/"+eventId);
+            $location.url("/user/"+vm.userId+"/event/edit/"+eventId);
         }
 
         function showEvent(event) {
