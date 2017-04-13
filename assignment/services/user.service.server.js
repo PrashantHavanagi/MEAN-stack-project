@@ -197,7 +197,7 @@ module.exports = function (app,userModel) {
     }
 
     function isAdmin(req, res) {
-        res.send(req.user.role == 'ADMIN' ? req.user : '0');
+        res.send(req.isAuthenticated() & req.user.role == 'ADMIN' ? req.user : '0');
     }
     function findAllUsers(req, res) {
         userModel
