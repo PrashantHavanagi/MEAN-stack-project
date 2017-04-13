@@ -67,8 +67,9 @@
                     .findEventById(vm.eventId)
                     .success(function(event){
                         vm.event = event;
+                        var eventAdress = "";
                         if(event.type == 'REST'){
-                            var  eventAdress = event.eventName+" ";
+                            eventAdress = event.eventName+" ";
                         }
                         eventAdress += event.address;
                         var userAdress = vm.user.address;

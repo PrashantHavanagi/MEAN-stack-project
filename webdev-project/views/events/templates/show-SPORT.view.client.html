@@ -33,7 +33,7 @@
         <div class="form-group">
     <div ng-if="model.user.username === model.event.eventCreator">
         <button id="edit" class="btn btn-success btn-block" data-dismiss="modal" ng-click="model.editEvent(model.event._id)">Edit</button></div></div>
-            <div class="form-group">
+            <div ng-if="model.user.username === model.event.eventCreator" class="form-group">
         <button class="btn btn-danger btn-block" data-dismiss="modal" ng-click="model.deleteEvent(model.event._id)">Delete</button>
             </div>
 
