@@ -57,7 +57,12 @@
         }
         function deleteEvent(event) {
             EventService.deleteEvent(event._id)
-                .then(findAllEvents);
+                .success(function(res){
+                    findAllEvents();
+                })
+                .error(function (err) {
+                    model.error = 'sorry could not delete event';
+                });
         }
     }
 })();

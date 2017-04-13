@@ -37,14 +37,15 @@
             <p class="blog-heading">Search for the events in which you are interested..</p>
         </div>
     </div>
-
-    <div class="row">
+<div class="row">
         <div class="container-fluid">
             <div class="form-group">
+                Enter sport/movie/restaurant to filter the events
             <input ng-model="searchText" id="r" type="text" name="search" placeholder="Search.." /><br></div></div>
         <!--<p align="right"> <label>Search: <input ng-model="searchText"></label>-->
         <div id="searchTextResults">
             <br>
+            <div ng-if="!model.events.length">No events found.</div>
             <div ng-repeat="event in model.events | filter:searchText" class="col-sm-4">
 
                 <div class="single-blog">

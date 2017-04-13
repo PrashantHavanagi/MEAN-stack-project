@@ -40,7 +40,7 @@
                 controller: 'AdminController',
                 controllerAs: 'model',
                 resolve: {
-                    //adminUser: isAdmin
+                    adminUser: isAdmin
                 }
             })
             .when("/user/:uid/events", {
@@ -84,15 +84,16 @@
                 redirectTo: "/home"
             });
     }
-    // function isAdmin(UserService, $location) {
-    //     UserService
-    //         .isAdmin()
-    //         .then(function (user) {
-    //             if(user == '0') {
-    //                 $location.url('/admin')
-    //             } else {
-    //                 $location.url("/user/" + user._id+"/events");
-    //             }
-    //         });
-    // }
+    function isAdmin(UserService, $location) {
+        UserService
+            .isAdmin()
+            .then(function (user) {
+                console.log(user);
+                if(user == '0') {
+                    $location.url('/home')
+                } else {
+                    $location.url("/admin/" + user._id);
+                }
+            });
+    }
 })();
