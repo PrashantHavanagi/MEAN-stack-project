@@ -52,7 +52,8 @@
             .when("/user/:uid/profile", {
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "ProfileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: { loggedin: checkLoggedIn }
             })
             .when("/user/:uid/sport", {
                 templateUrl: "views/events/templates/sport.event.view.client.html",
