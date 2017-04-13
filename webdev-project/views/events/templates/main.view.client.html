@@ -37,13 +37,16 @@
             <p class="blog-heading">Search for the events in which you are interested..</p>
         </div>
     </div>
-    <div class="row">
 
-        <input ng-model="searchText" id="r" type="text" name="search" placeholder="Search.."/><br>
+    <div class="row">
+        <div class="container-fluid">
+            <div class="form-group">
+            <input ng-model="searchText" id="r" type="text" name="search" placeholder="Search.." /><br></div></div>
         <!--<p align="right"> <label>Search: <input ng-model="searchText"></label>-->
         <div id="searchTextResults">
             <br>
             <div ng-repeat="event in model.events | filter:searchText" class="col-sm-4">
+
                 <div class="single-blog">
                     <div class="center-cropped">
                     <img ng-src="{{event.url}}" class="img-responsive"/>
@@ -60,21 +63,16 @@
                     &nbsp;&nbsp;&nbsp;
                     Likes:&nbsp;{{event.likes}}
 
-                    <!-- Modal -->
                 </div>
+
+
+
+
             </div>
+
         </div>
     </div>
 </div>
-<br>
-
-
-<div class="pull-right">
-   <h3>HIT COUNT :</h3>
-    <img src='http://hit-counter-html-code.com/wp-content/themes/customizr/hitcounter/c.php?d=5&id=161211&s=167' border='0' title='Web Design Orange County'></a>
-</div>
-
-
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

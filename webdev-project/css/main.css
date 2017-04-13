@@ -1,7 +1,9 @@
 
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
 
-
+p {
+	word-wrap: break-word;
+}
 .center-cropped {
 	width: 150px;
 	height: 150px;
@@ -9,6 +11,20 @@
 	background-repeat: no-repeat;
 	position: relative;
 	overflow: hidden;
+}
+
+.crop {
+	width:200px;
+	height: 250px;
+	position: relative;
+	overflow: hidden;
+}
+
+.crop img {
+	width: 200px;
+	height: 300px;
+	position: relative;
+	/*margin: -75px 0 0 -100px;*/
 }
 
 .modal-body p {
