@@ -212,9 +212,15 @@
 
         function participateUser(user, eventId) {
             EventService.addParticipant(user, eventId)
-                .success(function(event){
+                .success(function(res){
                     vm.message = "You have successfully registered for this event";
-                    console.log(event);
+                    EventService.findEventById(eventId)
+                        .success(function(event){
+                            vm.event = event;
+                        })
+                        .error(function (err) {
+                            vm.error = 'sorry something went wrong';
+                        });
                 })
                 .error(function (err) {
                     vm.error = 'sorry could not create event';
