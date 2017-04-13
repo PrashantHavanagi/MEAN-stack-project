@@ -3,12 +3,8 @@ module.exports = function () {
         createComment: createComment,
         findCommentsById: findCommentsById,
         findComments: findComments,
-        // findEventsByZip: findEventsByZip,
-        // updateEvent: updateEvent,
         deleteComment: deleteComment,
-        // //deletePageAndChildren: deletePageAndChildren,
         setModel: setModel,
-        // addParticipant: addParticipant
     };
 
     var mongoose = require('mongoose');
@@ -21,24 +17,6 @@ module.exports = function () {
     function findCommentsById(eventId) {
         return CommentModel.find({eventId:eventId}).sort({dateCreated:-1});
     }
-    // function addParticipant(eventId, user){
-    //  return model.userModel
-    //         .findUserById(user._id)
-    //         .then(function (user) {
-    //             return EventModel.update(
-    //                 { _id: eventId },
-    //                 { $addToSet: {participants: user._id } })
-    //                 .then(function (event) {
-    //                 user.events.push(eventId);
-    //                 user.save();
-    //                 return event;
-    //                 }, function (err) {
-    //                     return err;
-    //                 });
-    //         }, function (err) {
-    //             return err;
-    //         });
-    // }
 
     function createComment(newComment){
         return CommentModel
@@ -88,49 +66,13 @@ module.exports = function () {
                 return err;
             });
     }
-    function updateEvent(eventId, updatedEvent){
-        return EventModel.update({_id:eventId},{$set: updatedEvent});
-    }
+
     function deleteComment(eventId) {
         return CommentModel.remove({eventId:eventId}).then(function (response) {
             return response;
         }, function (err) {
             return err;
         });
-    }
-
-    function deleteAll(widgetsOfPage, pageId) {
-        if(widgetsOfPage.length == 0){
-
-            return EventModel.remove({_id: pageId})
-                .then(function (response) {
-                    if(response.result.n == 1 && response.result.ok == 1){
-                        return response;
-                    }
-                }, function (err) {
-                    return err;
-                });
-        }
-
-        return model.widgetModel.deleteWidgetOfPage(widgetsOfPage.shift())
-            .then(function (response) {
-                if(response.result.n == 1 && response.result.ok == 1){
-                    return deleteAll(widgetsOfPage, pageId);
-                }
-            }, function (err) {
-                return err;
-            });
-    }
-
-    function deleteChildren(pageId) {
-
-        return EventModel.findById({_id: pageId})
-            .then(function (page) {
-                var widgetsOfPage = page.widgets;
-                return deleteAll(widgetsOfPage, pageId);
-            }, function (err) {
-                return err;
-            });
     }
 
     function setModel(_model) {

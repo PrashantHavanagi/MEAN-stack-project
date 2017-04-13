@@ -35,13 +35,18 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            .when('/admin/:uid', {
+            .when('/admin/:aid', {
                 templateUrl: 'views/admin/templates/admin.view.client.html',
                 controller: 'AdminController',
                 controllerAs: 'model',
                 resolve: {
                     adminUser: isAdmin
                 }
+            })
+            .when("/admin/:aid/profile/:uid", {
+                templateUrl: "views/admin/templates/admin.profile.edit.view.client.html",
+                controller: "AdminController",
+                controllerAs: "model",
             })
             .when("/user/:uid/events", {
                 templateUrl: "views/events/templates/main.view.client.html",
