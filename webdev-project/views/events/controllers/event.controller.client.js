@@ -72,7 +72,7 @@
                             eventAdress = event.eventName+" ";
                         }
                         eventAdress += event.address + " " + event.zipcode;
-                        var userAdress = vm.user.address;
+                        var userAdress = vm.user.address +" "+vm.user.zipcode;
                         // vm.source = $sce.trustAsResourceUrl("//www.google.com/maps/embed/v1/place?q="+adress+"&zoom=13&attribution_source=Google+Maps+Embed+API&attribution_web_url=https://developers.google.com/maps/documentation/embed/ &key=AIzaSyC2hDsxuScggdqETcFmGCk4HC_16W5zv7A");
                         vm.source = $sce.trustAsResourceUrl("//www.google.com/maps/embed/v1/directions?origin="+userAdress+"&destination="+eventAdress+"&key=AIzaSyANw0wlspxQEEv2GUhEXe-gZ78kHx64OtE");
                         vm.event.eventDate = new Date(event.eventDate);
