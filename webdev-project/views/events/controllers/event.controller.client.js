@@ -67,7 +67,7 @@
                     .findEventById(vm.eventId)
                     .success(function(event){
                         vm.event = event;
-                        var adress = event.address;
+                        var adress = event.address+event.zipcode;
                         vm.source = $sce.trustAsResourceUrl("//www.google.com/maps/embed/v1/place?q="+adress+"&zoom=13&attribution_source=Google+Maps+Embed+API&attribution_web_url=https://developers.google.com/maps/documentation/embed/ &key=AIzaSyC2hDsxuScggdqETcFmGCk4HC_16W5zv7A");
                         vm.event.eventDate = new Date(event.eventDate);
                         if(vm.user.likedEvents.indexOf(vm.event._id) !== -1) {
