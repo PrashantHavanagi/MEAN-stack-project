@@ -51,11 +51,21 @@ module.exports = function (app,userModel) {
                             },
                             email: profile.emails[0].value
                         };
-                        userModel
-                            .createUser(newFacebookUser)
+                        return userModel
+                            .findUserbyUsername(newFacebookUser.username)
                             .then(function (user) {
-                                return done(null, user);
+                                if(user != null){
+                                    return done(null, user);
+                                }
+                                return userModel
+                                    .createUser(newFacebookUser)
+                                    .then(function (user) {
+                                        return done(null, user);
+                                    });
+
                             });
+
+
                     }
                 },
                 function(err) {
@@ -87,9 +97,17 @@ module.exports = function (app,userModel) {
                             }
                         };
                         return userModel
-                            .createUser(newGoogleUser)
+                            .findUserbyUsername(newGoogleUser.username)
                             .then(function (user) {
-                                return done(null, user);
+                                if(user != null){
+                                    return done(null, user);
+                                }
+                                return userModel
+                                    .createUser(newGoogleUser)
+                                    .then(function (user) {
+                                        return done(null, user);
+                                    });
+
                             });
                     }
                 },
