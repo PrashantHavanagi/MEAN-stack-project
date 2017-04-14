@@ -54,6 +54,7 @@
             <span ng-click="model.deleteEvent(event)" class="glyphicon glyphicon-remove pull-right"></span>
             <span ng-click="model.updateEvent(event._id)" class="glyphicon glyphicon-edit pull-right"></span>
         </li>
+        <li ng-if="model.events.length === 0">No Events yet.</li>
     </ul>
 
 </div>

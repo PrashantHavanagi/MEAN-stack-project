@@ -258,7 +258,7 @@
 
                     })
                     .error(function (err) {
-                        vm.error = 'something went wrong';
+                        vm.error = 'Please enter valid zipcode';
                     });
                 }
 

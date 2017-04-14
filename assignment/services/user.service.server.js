@@ -316,10 +316,10 @@ module.exports = function (app,userModel) {
     function findUserByUsername(req, res) {
         var username = req.query.username;
         userModel
-            .findUserByUsername(username)
-            .then(function (users) {
-                if (users.length != 0) {
-                    res.json(users[0]);
+            .findUserbyUsername(username)
+            .then(function (user) {
+                if (user != null) {
+                    res.json(user);
                 }
                 else {
                     res.sendStatus(404);

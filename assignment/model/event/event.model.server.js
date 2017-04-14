@@ -10,7 +10,8 @@ module.exports = function () {
         addParticipant: addParticipant,
         updateLike: updateLike,
         findEvents: findEvents,
-        findEventsbyCreator: findEventsbyCreator
+        findEventsbyCreator: findEventsbyCreator,
+        findEventByPerticipants: findEventByPerticipants
     };
 
     var mongoose = require('mongoose');
@@ -20,6 +21,9 @@ module.exports = function () {
 
     return api;
 
+    function findEventByPerticipants(userName) {
+        return EventModel.find({participants:userName});
+    }
     function findEventsbyCreator(userId) {
         return EventModel.find({_user:userId});
     }
@@ -164,10 +168,11 @@ module.exports = function () {
                     return err;
                 });
         }
-        model.userModel.findUserbyUsername(participants.shift())
+        return model.userModel.findUserbyUsername(participants.shift())
             .then(function (user) {
                 user.events.splice(user.events.indexOf(eventId), 1);
-                return deleteParticipantsAndComment(participants,eventId)
+                user.save();
+                return deleteParticipantsAndComment(participants,eventId);
             }, function (err) {
                 return err;
             });

@@ -29,22 +29,30 @@
                 return;
             }
 
-
             UserService
-                .login(user)
-                .then(function (response) {
-                    var user = response.data;
-                    $rootScope.currentUser = user;
-                    console.log("cant redirect now");
-                    if(user.role == "ADMIN"){
-                        $location.url("/admin/"+ user._id);
-                    }
-                    else{
-                        $location.url("/user/"+user._id+"/events");
-                    }
-                },function (err) {
-                    vm.error = "Username/password does not match";
+                .findUserByUsername(user.username)
+                .success(function (response) {
+                    UserService
+                        .login(user)
+                        .then(function (response) {
+                            var user = response.data;
+                            $rootScope.currentUser = user;
+                            console.log("cant redirect now");
+                            if(user.role == "ADMIN"){
+                                $location.url("/admin/"+ user._id);
+                            }
+                            else{
+                                $location.url("/user/"+user._id+"/events");
+                            }
+                        },function (err) {
+                            vm.error = "Username/password does not match";
+                        });
+                })
+                .error(function (err) {
+                    vm.error = 'No user found';
                 });
+
+
 
         }
 

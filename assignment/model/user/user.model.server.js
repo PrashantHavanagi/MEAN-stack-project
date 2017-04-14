@@ -54,23 +54,53 @@
                 return err;
             });
     }
-        function deleteAll(events, userId) {
-            if(events.length == 0){
-                return UserModel.remove({_id:userId})
-                    .then(function (response) {
-                            return response;
-                        },
-                        function (err) {
-                            return err;
-                        });
-            }
-            model.eventModel.deleteEvent(events.shift()._id)
-                .then(function (res) {
-                    return deleteAll(events, userId)
-                }, function (err) {
-                    return err;
-                });
+
+    function deleteAll(events, userId) {
+        if(events.length == 0){
+            return findUserById(userId)
+                .then(function (user) {
+                        return model.eventModel.findEventByPerticipants(user.username)
+                            .then(function (participatedEvents) {
+                                    console.log("Prticipated Events Array:"+ participatedEvents)
+                                    return spliceUserFromEvents(participatedEvents, user);
+                                },
+                                function (err) {
+                                    return err;
+                                });
+                    },
+                    function (err) {
+                        return err;
+                    });
         }
+        model.eventModel.deleteEvent(events.shift()._id)
+            .then(function (res) {
+                return deleteAll(events, userId);
+            }, function (err) {
+                return err;
+            });
+    }
+
+    function spliceUserFromEvents(events, user) {
+        if(events.length == 0){
+            return UserModel.remove({_id:user._id})
+                .then(function (response) {
+                        return response;
+                    },
+                    function (err) {
+                        return err;
+                    });
+
+        }
+        model.eventModel.findEventById(events.shift()._id)
+            .then(function (event) {
+                event.participants.splice(event.participants.indexOf(user.username), 1);
+                event.save();
+                return spliceUserFromEvents(events, user);
+            }, function (err) {
+                return err;
+            });
+    }
+
     function updateUser(userId, updatedUser) {
         return UserModel.update({_id:userId},{$set:updatedUser});
     }
