@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1773c66-7252-4ce6-927c-44fa0f71772c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webdev-project/views/events/templates/editors/movie.edit.view.client.html" afterPath="$PROJECT_DIR$/webdev-project/views/events/templates/editors/movie.edit.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webdev-project/views/events/templates/editors/restaurant.edit.view.client.html" afterPath="$PROJECT_DIR$/webdev-project/views/events/templates/editors/restaurant.edit.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webdev-project/views/events/templates/editors/sport.edit.view.client.html" afterPath="$PROJECT_DIR$/webdev-project/views/events/templates/editors/sport.edit.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webdev-project/views/user/templates/about-us.view.client.html" afterPath="$PROJECT_DIR$/webdev-project/views/user/templates/about-us.view.client.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webdev-project/views/events/templates/show-MOVIE.view.client.html" afterPath="$PROJECT_DIR$/webdev-project/views/events/templates/show-MOVIE.view.client.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webdev-project/views/events/templates/show-REST.view.client.html" afterPath="$PROJECT_DIR$/webdev-project/views/events/templates/show-REST.view.client.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webdev-project/views/events/templates/show-SPORT.view.client.html" afterPath="$PROJECT_DIR$/webdev-project/views/events/templates/show-SPORT.view.client.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.view.client.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/main.view.client.html">
+      <file leaf-file-name="user.service.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assignment/services/user.service.server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-206">
-              <caret line="40" column="17" lean-forward="true" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+            <state relative-caret-position="172">
+              <caret line="318" column="13" lean-forward="false" selection-start-line="318" selection-start-column="13" selection-end-line="318" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -39,18 +39,38 @@
       <file leaf-file-name="show-MOVIE.view.client.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/show-MOVIE.view.client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="49" column="24" lean-forward="true" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
+            <state relative-caret-position="255">
+              <caret line="17" column="140" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="140" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="event.edit.view.client.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/editors/event.edit.view.client.html">
+      <file leaf-file-name="show-SPORT.view.client.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/show-SPORT.view.client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="35" column="10" lean-forward="true" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+            <state relative-caret-position="225">
+              <caret line="15" column="70" lean-forward="false" selection-start-line="15" selection-start-column="70" selection-end-line="15" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.view.client.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webdev-project/views/user/templates/profile.view.client.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="90" column="11" lean-forward="false" selection-start-line="90" selection-start-column="11" selection-end-line="103" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show-REST.view.client.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/show-REST.view.client.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="290">
+              <caret line="25" column="140" lean-forward="false" selection-start-line="25" selection-start-column="140" selection-end-line="25" selection-end-column="140" />
               <folding />
             </state>
           </provider>
@@ -59,22 +79,20 @@
       <file leaf-file-name="movie.edit.view.client.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/editors/movie.edit.view.client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-              <folding>
-                <element signature="e#3855#3862#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-131">
+              <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="about-us.view.client.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="about-us.view.client.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webdev-project/views/user/templates/about-us.view.client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="67" column="132" lean-forward="false" selection-start-line="67" selection-start-column="132" selection-end-line="67" selection-end-column="132" />
+            <state relative-caret-position="259">
+              <caret line="61" column="22" lean-forward="false" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
               <folding>
-                <element signature="n#style#0;n#iframe#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <marker date="1492147583000" expanded="true" signature="4492:4497" ph="..." />
               </folding>
             </state>
           </provider>
@@ -83,8 +101,8 @@
       <file leaf-file-name="sport.event.view.client.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/sport.event.view.client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="190" column="10" lean-forward="true" selection-start-line="141" selection-start-column="4" selection-end-line="190" selection-end-column="10" />
+            <state relative-caret-position="214">
+              <caret line="141" column="39" lean-forward="false" selection-start-line="141" selection-start-column="32" selection-end-line="141" selection-end-column="39" />
               <folding>
                 <element signature="e#6166#6173#0" expanded="true" />
               </folding>
@@ -95,11 +113,9 @@
       <file leaf-file-name="restaurant.edit.view.client.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/editors/restaurant.edit.view.client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="66" column="18" lean-forward="false" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
-              <folding>
-                <element signature="e#4635#4642#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="705">
+              <caret line="80" column="18" lean-forward="false" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="18" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -108,29 +124,7 @@
         <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/editors/sport.edit.view.client.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="394">
-              <caret line="136" column="39" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="39" />
-              <folding>
-                <element signature="e#3204#3211#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="register.view.client.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webdev-project/views/user/templates/register.view.client.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1725">
-              <caret line="115" column="36" lean-forward="false" selection-start-line="115" selection-start-column="36" selection-end-line="115" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="event.view.client.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/event.view.client.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="87" lean-forward="true" selection-start-line="12" selection-start-column="87" selection-end-line="12" selection-end-column="87" />
+              <caret line="81" column="39" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -149,7 +143,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>top</find>
       <find>himu</find>
       <find>html</find>
       <find>home</find>
@@ -178,6 +171,8 @@
       <find>register</find>
       <find>about</find>
       <find>blog</find>
+      <find>myModal</find>
+      <find>review</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -212,9 +207,6 @@
         <option value="$PROJECT_DIR$/assignment/model/event/event.model.server.js" />
         <option value="$PROJECT_DIR$/webdev-project/views/user/controllers/login.controller.client.js" />
         <option value="$PROJECT_DIR$/webdev-project/css/main.css" />
-        <option value="$PROJECT_DIR$/webdev-project/views/events/templates/show-REST.view.client.html" />
-        <option value="$PROJECT_DIR$/webdev-project/views/events/templates/show-SPORT.view.client.html" />
-        <option value="$PROJECT_DIR$/webdev-project/views/events/templates/show-MOVIE.view.client.html" />
         <option value="$PROJECT_DIR$/assignment/services/user.service.server.js" />
         <option value="$PROJECT_DIR$/webdev-project/views/events/templates/widget-flickr-search.view.client.html" />
         <option value="$PROJECT_DIR$/webdev-project/services/event.service.client.js" />
@@ -237,6 +229,9 @@
         <option value="$PROJECT_DIR$/webdev-project/views/events/templates/editors/restaurant.edit.view.client.html" />
         <option value="$PROJECT_DIR$/webdev-project/views/events/templates/editors/movie.edit.view.client.html" />
         <option value="$PROJECT_DIR$/webdev-project/views/user/templates/about-us.view.client.html" />
+        <option value="$PROJECT_DIR$/webdev-project/views/events/templates/show-MOVIE.view.client.html" />
+        <option value="$PROJECT_DIR$/webdev-project/views/events/templates/show-REST.view.client.html" />
+        <option value="$PROJECT_DIR$/webdev-project/views/events/templates/show-SPORT.view.client.html" />
       </list>
     </option>
   </component>
@@ -453,6 +448,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MEAN-stack-project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MEAN-stack-project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev-project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -765,12 +778,12 @@
       <workItem from="1491875883779" duration="14200000" />
       <workItem from="1491941565039" duration="13887000" />
       <workItem from="1492009117345" duration="15736000" />
-      <workItem from="1492111637007" duration="19645000" />
+      <workItem from="1492111637007" duration="21703000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152662000" />
+    <option name="totallyTimeSpent" value="154720000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -780,7 +793,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20963855" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12771085" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32771084" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31666666" sideWeight="0.5041032" order="2" side_tool="true" content_ui="tabs" />
@@ -807,17 +820,11 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assignment/model/event/event.schema.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="10" lean-forward="false" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assignment/model/event/event.model.server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
           <caret line="56" column="66" lean-forward="true" selection-start-line="56" selection-start-column="66" selection-end-line="56" selection-end-column="66" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -850,36 +857,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/show-SPORT.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="53" column="14" lean-forward="false" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
-          <folding>
-            <marker date="1492128347000" expanded="true" signature="1944:2142" ph="..." />
-            <marker date="1492128347000" expanded="true" signature="1998:2127" ph="..." />
-            <marker date="1492128347000" expanded="true" signature="2176:2300" ph="..." />
-            <marker date="1492128347000" expanded="true" signature="2333:2402" ph="..." />
-            <marker date="1492128347000" expanded="true" signature="2493:2774" ph="..." />
-            <marker date="1492128347000" expanded="true" signature="2508:2722" ph="..." />
-            <marker date="1492128347000" expanded="false" signature="2547:2553" ph=" " />
-            <marker date="1492128347000" expanded="false" signature="2595:2601" ph=" " />
-            <marker date="1492128347000" expanded="false" signature="2686:2692" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assignment/model/user/user.schema.server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/show-REST.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="53" column="73" lean-forward="false" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="73" />
           <folding />
         </state>
       </provider>
@@ -928,14 +909,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
           <caret line="66" column="13" lean-forward="false" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assignment/services/user.service.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="179" column="13" lean-forward="false" selection-start-line="179" selection-start-column="13" selection-end-line="179" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1097,14 +1070,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webdev-project/views/user/templates/profile.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="50" column="159" lean-forward="false" selection-start-line="50" selection-start-column="159" selection-end-line="50" selection-end-column="159" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webdev-project/views/user/templates/login.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
@@ -1124,7 +1089,7 @@
     <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/event.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="12" column="87" lean-forward="true" selection-start-line="12" selection-start-column="87" selection-end-line="12" selection-end-column="87" />
+          <caret line="12" column="87" lean-forward="false" selection-start-line="12" selection-start-column="87" selection-end-line="12" selection-end-column="87" />
           <folding />
         </state>
       </provider>
@@ -1132,15 +1097,7 @@
     <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/main.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-206">
-          <caret line="40" column="17" lean-forward="true" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/show-MOVIE.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="49" column="24" lean-forward="true" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
+          <caret line="40" column="17" lean-forward="false" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -1148,58 +1105,100 @@
     <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/editors/event.edit.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
-          <caret line="35" column="10" lean-forward="true" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+          <caret line="35" column="10" lean-forward="false" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/sport.event.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="190" column="10" lean-forward="true" selection-start-line="141" selection-start-column="4" selection-end-line="190" selection-end-column="10" />
-          <folding>
-            <element signature="e#6166#6173#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/editors/restaurant.edit.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="66" column="18" lean-forward="false" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
-          <folding>
-            <element signature="e#4635#4642#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="705">
+          <caret line="80" column="18" lean-forward="false" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/editors/sport.edit.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="394">
-          <caret line="136" column="39" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="39" />
-          <folding>
-            <element signature="e#3204#3211#0" expanded="true" />
-          </folding>
+          <caret line="81" column="39" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/editors/movie.edit.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-          <folding>
-            <element signature="e#3855#3862#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-131">
+          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webdev-project/views/user/templates/about-us.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="67" column="132" lean-forward="false" selection-start-line="67" selection-start-column="132" selection-end-line="67" selection-end-column="132" />
+        <state relative-caret-position="259">
+          <caret line="61" column="22" lean-forward="false" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
           <folding>
-            <element signature="n#style#0;n#iframe#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <marker date="1492147583000" expanded="true" signature="4492:4497" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/express/lib/router/layer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="94" column="4" lean-forward="false" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assignment/services/user.service.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="318" column="13" lean-forward="false" selection-start-line="318" selection-start-column="13" selection-end-line="318" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webdev-project/views/user/templates/profile.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="90" column="11" lean-forward="false" selection-start-line="90" selection-start-column="11" selection-end-line="103" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/sport.event.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="141" column="39" lean-forward="false" selection-start-line="141" selection-start-column="32" selection-end-line="141" selection-end-column="39" />
+          <folding>
+            <element signature="e#6166#6173#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/show-MOVIE.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="140" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="140" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/show-REST.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="25" column="140" lean-forward="false" selection-start-line="25" selection-start-column="140" selection-end-line="25" selection-end-column="140" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webdev-project/views/events/templates/show-SPORT.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="70" lean-forward="false" selection-start-line="15" selection-start-column="70" selection-end-line="15" selection-end-column="70" />
+          <folding />
         </state>
       </provider>
     </entry>
