@@ -1,6 +1,5 @@
 module.exports = function (app,eventModel) {
     app.get("/api/event/:eventId", findEventById);
-    // app.get("/api/website/:websiteId/page", findAllPagesForWebsite);
     app.put("/api/updateEvent/:eventId", updateEvent);
     app.delete("/api/event/:eventId", deleteEvent);
     app.get("/api/event", findEventsByZip);

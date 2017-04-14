@@ -6,6 +6,19 @@ module.exports = function (app,userModel) {
     var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
     var FacebookStrategy = require('passport-facebook').Strategy;
 
+
+    app.post('/api/logout',logout);
+    app.post ('/api/register', register);
+    app.get ('/api/loggedin', loggedin);
+    app.get("/api/user", findUser);
+    app.get("/api/user/:userId", findUserByUserId);
+    app.put("/api/user/:userId", updateUser);
+    app.delete("/api/user/:userId", deleteUser);
+    app.post("/api/user", createUser);
+    app.post('/api/isAdmin', isAdmin);
+    app.get('/api/allUsers', findAllUsers);
+    app.post("/api/login", passport.authenticate('local'), login);
+
     var facebookConfig = {
         clientID: "1908741509411603",
         clientSecret: "3232c2091ac80365858442b3cbfab8dd",
@@ -126,18 +139,6 @@ module.exports = function (app,userModel) {
 
             res.redirect(url);
         });
-
-    app.post("/api/login", passport.authenticate('local'), login);
-    app.post('/api/logout',logout);
-    app.post ('/api/register', register);
-    app.get ('/api/loggedin', loggedin);
-    app.get("/api/user", findUser);
-    app.get("/api/user/:userId", findUserByUserId);
-    app.put("/api/user/:userId", updateUser);
-    app.delete("/api/user/:userId", deleteUser);
-    app.post("/api/user", createUser);
-    app.post('/api/isAdmin', isAdmin);
-    app.get('/api/allUsers', findAllUsers);
 
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
