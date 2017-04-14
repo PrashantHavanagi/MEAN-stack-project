@@ -15,7 +15,6 @@ module.exports = function (app,eventModel) {
             .then(function (events) {
                 res.json(events);
             }, function (err) {
-                console.log(err);
                 res.sendStatus(404);
             });
     }
@@ -29,7 +28,6 @@ module.exports = function (app,eventModel) {
             .then(function (event) {
                 res.json(event);
             }, function (err) {
-                console.log(err);
                 res.sendStatus(404);
             });
     }

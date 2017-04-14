@@ -39,7 +39,6 @@ module.exports = function () {
         return EventModel.findOne({_id:eventId});
     }
     function findEventsByZip(zipcode, userId){
-        console.log(userId);
         return model.userModel
             .findUserById(userId)
             .then(function (user) {

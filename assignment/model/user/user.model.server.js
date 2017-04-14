@@ -61,7 +61,6 @@
                 .then(function (user) {
                         return model.eventModel.findEventByPerticipants(user.username)
                             .then(function (participatedEvents) {
-                                    console.log("Prticipated Events Array:"+ participatedEvents)
                                     return spliceUserFromEvents(participatedEvents, user);
                                 },
                                 function (err) {

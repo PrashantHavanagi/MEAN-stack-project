@@ -24,7 +24,6 @@ module.exports = function (app,commentModel) {
             userName: user.username,
             dateCreated: Date.now()
         };
-        console.log(newComment);
         commentModel
             .createComment(newComment)
             .then(function (comments) {

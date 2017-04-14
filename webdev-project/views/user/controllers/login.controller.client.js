@@ -37,7 +37,6 @@
                         .then(function (response) {
                             var user = response.data;
                             $rootScope.currentUser = user;
-                            console.log("cant redirect now");
                             if(user.role == "ADMIN"){
                                 $location.url("/admin/"+ user._id);
                             }

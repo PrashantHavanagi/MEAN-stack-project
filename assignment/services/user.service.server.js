@@ -121,7 +121,6 @@ module.exports = function (app,userModel) {
         passport.authenticate('google', {
             failureRedirect: '#/login'
         }), function(req, res){
-                console.log("here");
             var url = '/#/user/'+req.user._id.toString()+'/profile';
 
 
@@ -144,21 +143,15 @@ module.exports = function (app,userModel) {
     passport.deserializeUser(deserializeUser);
 
     function localStrategy(username, password, done) {
-        console.log("in local strategy");
         userModel
         // .findUserByCredentials(username, password)
 
             .findUserbyUsername(username)
             .then(
                 function(user) {
-                    console.log("found user");
                     if(user != null && user.username === username && bcrypt.compareSync(password, user.password)) {
-                        console.log(user);
                         return done(null, user);
                     } else {
-                        console.log(bcrypt.hashSync(user.password));
-                        console.log(password);
-                        console.log(user.password);
                         return done(null, false);
                     }
                 },
@@ -168,12 +161,10 @@ module.exports = function (app,userModel) {
             );
     }
     function login(req, res) {
-        console.log("came to login as well");
         var user = req.user;
         res.json(user);
     }
     function logout(req, res) {
-        console.log("successfully logged out");
         req.logOut();
         res.sendStatus(200);
     }
@@ -255,13 +246,11 @@ module.exports = function (app,userModel) {
             zipcode: user.zipcode,
             dateCreated: Date.now()
         };
-        console.log(newUser);
         userModel
             .createUser(newUser)
             .then(function (newUser) {
                 res.json(newUser);
             }, function (err) {
-                console.log("Here");
                 res.sendStatus(404).send(err);
             });
 

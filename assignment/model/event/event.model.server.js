@@ -102,7 +102,6 @@ module.exports = function () {
         return EventModel.find({eventDate: {"$gte": Date.now()}}).sort({dateCreated:-1});
     }
     function findEventsByZip(zipcode, userId){
-        console.log(userId);
         return model.userModel
             .findUserById(userId)
             .then(function (user) {
@@ -121,10 +120,8 @@ module.exports = function () {
                 return EventModel.find(
                     { $and: [ { type: { $in: [type1, type3] } }, { nearByZipcodes: zipcode, eventDate: {"$gte": Date.now()}} ] }
                     ).then(function (events) {
-                        console.log(events);
                     return EventModel.find({ type: type2, eventDate: {"$gte": Date.now()}})
                         .then(function (movieEvents) {
-                            console.log(movieEvents);
                         if(movieEvents[0]){
                             events = events.concat(movieEvents);
                         }
