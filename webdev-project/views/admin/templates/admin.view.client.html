@@ -37,7 +37,8 @@
             Users
             <span class="pull-right">Edit/Delete</span>
         </li>
-        <li ng-repeat="user in model.users" class="list-group-item">
+        <input ng-model="searchUser" id="r" type="text" name="search" placeholder="Search.." />
+        <li ng-repeat="user in model.users | filter:searchUser" class="list-group-item">
             {{user.username}} &nbsp;-&nbsp; {{user.role}}
             <span ng-click="model.deleteUser(user)" class="glyphicon glyphicon-remove pull-right"></span>
             <span ng-click="model.editUser(user._id)" class="glyphicon glyphicon-edit pull-right"></span>
@@ -49,7 +50,8 @@
             Events
             <span class="pull-right">Edit/Delete</span>
         </li>
-        <li ng-repeat="event in model.events" class="list-group-item">
+        <input ng-model="searchEvent" id="r" type="text" name="search" placeholder="Search.." />
+        <li ng-repeat="event in model.events | filter:searchEvent" class="list-group-item">
             {{event.eventName}} &nbsp;-&nbsp; {{event.type}}
             <span ng-click="model.deleteEvent(event)" class="glyphicon glyphicon-remove pull-right"></span>
             <span ng-click="model.updateEvent(event._id)" class="glyphicon glyphicon-edit pull-right"></span>
