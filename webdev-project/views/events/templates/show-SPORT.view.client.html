@@ -57,7 +57,9 @@
         <div ng-repeat="comment in model.event.comments">
         <span>
             <i class="fa fa-clock-o">&nbsp;</i>{{comment.dateCreated | date:"h:mma"}}&nbsp;|
-            <i class="fa fa-pencil-square-o"><strong>{{comment.userName}} </strong>&nbsp;</i>says:&nbsp;
+            <i class="fa fa-pencil-square-o"><strong>
+                <a ng-click="model.getUserData(comment.userName)" data-target="#myModal" data-toggle="modal">{{comment.userName}}</a>
+                 </strong>&nbsp;</i>says:&nbsp;
         </span>
 
         <p>{{comment.description}}</p>
