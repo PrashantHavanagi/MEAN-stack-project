@@ -98,15 +98,42 @@
                     <label><input type="checkbox"  ng-model="model.user.movies" name="interest" />Movies</label>
                 </div>
                 <div class="checkbox">
-                    <label><input type="checkbox" ng-model="model.user.rest" name="interest"/>Restuarents</label>
+                    <label><input type="checkbox" ng-model="model.user.rest" name="interest"/>Restaurants</label>
                 </div>
                 </div>
             </div>
+
         </form>
+
+
         <div class=" col-sm-offset-2 col-sm-10">
         <a class="btn btn-primary btn-block" ng-click="model.updateUser(model.user)">Update</a>
 
         <a ng-click="model.unregisterUser(model.user)" class="btn btn-danger btn-block">Delete</a>
+            <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#demo">My Events</button>
+            <br>
+            <div class="form-group">
+                <div id="demo" class="collapse">
+                    <div ng-repeat="event in model.events" class="col-sm-6">
+
+                        <div class="single-blog">
+                            <div class="center-cropped">
+                                <img ng-src="{{event.url}}" class="img-responsive"/>
+                            </div>
+                            <h2>{{event.eventName}}</h2>
+                            <ul class="post-meta">
+                                <li><i class="fa fa-pencil-square-o"></i><strong> Posted By:</strong> {{event.eventCreator}}</li>
+                                <li><i class="fa fa-clock-o"></i><strong> Posted On:</strong> {{event.dateCreated | date:"MM/dd/yyyy"}}</li>
+                            </ul>
+
+                            <a href="" class="btn btn-primary" ng-click="model.showEvent(event)">Read More</a>
+                            &nbsp;&nbsp;&nbsp;
+                            Likes:&nbsp;{{event.likes}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
     </div>
     </div>

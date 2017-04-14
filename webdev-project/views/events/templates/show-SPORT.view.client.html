@@ -23,7 +23,7 @@
     <p ng-show="model.event.participants.length">
         <strong>Participants:</strong>
     <div ng-repeat="participant in model.event.participants">
-    <li>{{participant}}</li>
+        <li><a ng-click="model.getUserData(participant)" data-target="#myModal" data-toggle="modal">{{participant}}</a></li>
 
     </div>
     </p>
@@ -64,4 +64,41 @@
     </div>
     </div>
     </div>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Search for images</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="container-fluid wbdev-container-side-space-fix">
+
+                        <form class="form-horizontal ng-pristine ng-valid ng-valid-email">
+                            <div class="form-group">
+                                <label for="first-name" class="col-sm-1 control-label">First Name</label>
+                                <div class="col-sm-10">
+                                    <input ng-model="model.partiUser.username" type="text" id="first-name" class="form-control ng-pristine ng-valid ng-touched" placeholder="First name">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                        {{model.partiUser.events.length}}
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>

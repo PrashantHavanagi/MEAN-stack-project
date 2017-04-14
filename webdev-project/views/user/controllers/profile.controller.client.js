@@ -3,12 +3,13 @@
         .module("WebAppMaker")
         .controller("ProfileController", profileController);
 
-    function profileController($routeParams, $location, UserService) {
+    function profileController($routeParams, $location, UserService, EventService) {
         var vm = this;
         var userId = $routeParams['uid'];
         vm.unregisterUser = unregisterUser;
         vm.updateUser=updateUser;
         vm.userId = userId;
+        vm.showEvent = showEvent;
 
         function init() {
             UserService
@@ -34,7 +35,32 @@
 
         function renderUser(user) {
             vm.user = user;
-            console.log(user);
+            var events = user.events;
+            console.log("Exy"+ events);
+            vm.events = [];
+            var final = [];
+            findAllEvents(events, final);
+        }
+
+        function showEvent(event) {
+            vm.event = event;
+            $location.url("/user/"+vm.userId+"/event/"+event._id);
+        }
+
+        function findAllEvents(events, final) {
+            if(events.length == 0){
+                vm.events = final;
+                console.log(vm.events);
+                return final;
+            }
+            return EventService.findEventById(events.shift())
+                .success(function (response) {
+                    final.push(response);
+                    findAllEvents(events, final);
+                })
+                .error(function () {
+                    vm.error = "unable to update user";
+                });
         }
          function updateUser(newUser) {
              if(newUser == null){

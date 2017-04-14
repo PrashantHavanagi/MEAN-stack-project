@@ -15,8 +15,7 @@
         vm.doLike = doLike;
         vm.searchPhotos = searchPhotos;
         vm.selectPhoto  = selectPhoto;
-        // vm.gotoSearch = gotoSearch;
-        // vm.event = {};
+        vm.getUserData = getUserData;
 
         vm.logout = logout;
 
@@ -32,12 +31,16 @@
         }
         init();
 
-        // function gotoSearch(event) {
-        //     if(event == undefined){
-        //         event = {};
-        //     }
-        //     $location.url("/user/"+vm.userId+"/sport/flickrsearch");
-        // }
+        function getUserData(userName) {
+            UserService.findUserByUsername(userName)
+                .success(function(user){
+                    vm.partiUser = user;
+                })
+                .error(function (err) {
+                    vm.error = 'sorry could not find participant.';
+                });
+        }
+
         function searchPhotos(searchTerm, event) {
             FlickrService
                 .searchPhotos(searchTerm)
@@ -265,20 +268,27 @@
         }
 
         function participateUser(user, eventId) {
-            EventService.addParticipant(user, eventId)
-                .success(function(res){
-                    vm.message = "You have successfully registered for this event";
-                    EventService.findEventById(eventId)
-                        .success(function(event){
-                            vm.event = event;
-                        })
-                        .error(function (err) {
-                            vm.error = 'sorry something went wrong';
-                        });
-                })
-                .error(function (err) {
-                    vm.error = 'sorry could not create event';
-                });
+            var events = user.events;
+            if(events.indexOf(eventId) !== -1) {
+                return;
+            }
+            else{
+                EventService.addParticipant(user, eventId)
+                    .success(function(res){
+                        vm.message = "You have successfully registered for this event";
+                        EventService.findEventById(eventId)
+                            .success(function(event){
+                                vm.event = event;
+                            })
+                            .error(function (err) {
+                                vm.error = 'sorry something went wrong';
+                            });
+                    })
+                    .error(function (err) {
+                        vm.error = 'sorry could not create event';
+                    });
+            }
+
         }
     }
 })();
