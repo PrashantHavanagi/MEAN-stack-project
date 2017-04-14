@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("EventsController", eventController);
 
-    function eventController($sce, $routeParams, EventService, UserService, CommentService, $location,$rootScope) {
+    function eventController($sce, $routeParams, EventService, UserService, CommentService, $location,$rootScope,FlickrService) {
         var vm = this;
         vm.registerEvent = registerEvent;
         vm.participateUser = participateUser;
@@ -13,20 +13,15 @@
         vm.deleteEvent = deleteEvent;
         vm.updateEvent = updateEvent;
         vm.doLike = doLike;
-
+        vm.searchPhotos = searchPhotos;
+        vm.selectPhoto  = selectPhoto;
+        // vm.gotoSearch = gotoSearch;
+        // vm.event = {};
 
         vm.logout = logout;
 
-        function logout() {
-            UserService
-                .logout()
-                .then(function (response) {
-                    $rootScope.currentUser = null;
-                    $location.url("/home");
-                });
-        }
-
         function init() {
+
             var userId = $routeParams['uid'];
             var eventId= $routeParams['eid'];
             vm.eventId = eventId;
@@ -36,6 +31,43 @@
                 .success(renderUser);
         }
         init();
+
+        // function gotoSearch(event) {
+        //     if(event == undefined){
+        //         event = {};
+        //     }
+        //     $location.url("/user/"+vm.userId+"/sport/flickrsearch");
+        // }
+        function searchPhotos(searchTerm, event) {
+            FlickrService
+                .searchPhotos(searchTerm)
+                .then(function(response) {
+                    data = response.data.replace("jsonFlickrApi(","");
+                    data = data.substring(0,data.length - 1);
+                    data = JSON.parse(data);
+                    vm.photos = data.photos;
+                });
+        }
+
+        function selectPhoto(photo) {
+            var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
+            url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
+            if(vm.event == undefined){
+                vm.event = {};
+            }
+            vm.event.url = url;
+
+
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(function (response) {
+                    $rootScope.currentUser = null;
+                    $location.url("/home");
+                });
+        }
 
 
         function renderUser(user) {
@@ -223,6 +255,7 @@
                             .error(function (err) {
                                 vm.error = 'sorry could not create event';
                             });
+
                     })
                     .error(function (err) {
                         vm.error = 'something went wrong';
