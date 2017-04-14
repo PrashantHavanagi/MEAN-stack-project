@@ -25,6 +25,10 @@
                 controller: "LoginController",
                 controllerAs: "model"
             })
+            .when("/about", {
+                templateUrl: "views/user/templates/about-us.view.client.html"
+
+            })
             .when("/login", {
                 templateUrl: "views/user/templates/login.view.client.html",
                 controller: "LoginController",
