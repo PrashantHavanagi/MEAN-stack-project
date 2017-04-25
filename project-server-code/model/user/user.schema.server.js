@@ -16,8 +16,9 @@ module.exports = function() {
         movies: Boolean,
         rest: Boolean,
         likedEvents: [{type: mongoose.Schema.Types.ObjectId, ref: 'EventModel'}],
-        facebook : [{id: Number, token: String}],
-        google : [{id: Number, token: String}],
+        viewedEvents: [{type: mongoose.Schema.Types.ObjectId, ref: 'EventModel'}],
+        facebook : {id: Number, token: String},
+        google : {id: Number, token: String},
         dateCreated: {type:Date, default: Date.now()}
     }, {collection: "gms.users"});
     return UserSchema;
